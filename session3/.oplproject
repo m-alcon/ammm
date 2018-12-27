@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?><project>
+	<version>1.0</version>
+	<configs>
+		<config category="opl" default="true" name="Configuraci&amp;#243;n 1">
+			<ref name="Prueba.mod" type="model">
+			</ref>
+			<ref name="InstanceGenerator/instances/small_1.dat" type="data">
+			</ref>
+		</config>
+		<config category="opl" default="false" name="Configuraci&amp;#243;n 2">
+			<ref name="Main.mod" type="model">
+			</ref>
+			<ref name="InstanceGenerator/instances/small_0.dat" type="data">
+			</ref>
+		</config>
+	</configs>
+	
+</project>

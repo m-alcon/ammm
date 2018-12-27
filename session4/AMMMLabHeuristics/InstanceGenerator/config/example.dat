@@ -1,0 +1,17 @@
+# file name: instances/instance_XX.dat
+instancesDirectory = data;
+fileNamePrefix = big;
+fileNameExtension = dat;
+numInstances = 10;
+
+numCPUs = 300;
+minNumCoresPerCPU = 4;
+maxNumCoresPerCPU = 16;
+minCapacityPerCore = 400;
+maxCapacityPerCore = 800;
+
+numTasks = 400;
+minNumThreadsPerTask = 4;
+maxNumThreadsPerTask = 8; 
+minResourcesPerThread = 100;
+maxResourcesPerThread = 800;

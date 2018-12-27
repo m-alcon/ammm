@@ -1,0 +1,20 @@
+AMMM Lab Heuristics
+-------------------
+Reading Config file config\sgreedy_Local_N1_BI.dat...
+Reading Input Data file data/small_0.dat...
+Creating Problem...
+Solving Problem...
+Elap. Time (s)   Obj. Value     Iterations
+    0.00000000          inf              0
+    0.10200000   0.37299938              1
+    6.57400012   0.25789135              1
+
+Greedy Candidate Evaluation Performance:
+  Num. Candidates Eval. 1600
+  Total Eval. Time      0.0989997386932 s
+  Avg. Time / Candidate 0.0618748366833 ms
+
+Local Search Performance:
+  Num. Iterations Eval. 11
+  Total Eval. Time      6.47200012207 s
+  Avg. Time / Iteration 588.363647461 ms

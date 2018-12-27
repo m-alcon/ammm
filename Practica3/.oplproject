@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?><project>
+	<version>1.0</version>
+	<configs>
+		<config category="opl" default="true" name="Configuraci&amp;#243;n 1">
+			<ref name="Practica3.mod" type="model">
+			</ref>
+			<ref name="instances/small_1.dat" type="data">
+			</ref>
+		</config>
+		<config category="opl" default="false" name="Main">
+			<ref name="Main.mod" type="model">
+			</ref>
+		</config>
+		<config category="opl" default="false" name="Configuration1">
+			<ref name="Prueba.mod" type="model">
+			</ref>
+			<ref name="Practica3.dat" type="data">
+			</ref>
+		</config>
+	</configs>
+	
+</project>

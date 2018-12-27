@@ -1,0 +1,13 @@
+// solution (optimal) with objective 0.203043461405569
+// Quality Incumbent solution:
+// MILP objective                                2.0304346141e-001
+// MILP solution norm |x| (Total, Max)           1.48203e+002 1.00000e+000
+// MILP solution error (Ax=b) (Total, Max)       9.80910e-013 5.68434e-014
+// MILP x bound error (Total, Max)               0.00000e+000 0.00000e+000
+// MILP x integrality error (Total, Max)         0.00000e+000 0.00000e+000
+// MILP slack bound error (Total, Max)           1.38778e-017 1.38778e-017
+
+45.09
+
+Constraints: 2445
+Variables: 30043

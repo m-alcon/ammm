@@ -1,0 +1,38 @@
+ROGER PUJOL TORRAMORELL & MIGUEL ALCÓN DOGANOC
+
+a.
+	- We changed the variable x_tc from float to boolean.
+b.
+	- P1:
+		Solution (optimal) with objective 0.723773179127243
+			CPU 1 loaded at 0.723773%
+			CPU 2 loaded at 0.723773%
+			CPU 3 loaded at 0.723773%
+		Time 0.078s
+		Algorithm LP
+		2 variables and (#tasks + 2*#computers) constraints
+	- P2:
+		Solution (optimal) with objective 0.799239077773661
+			CPU 1 loaded at 0.725908%
+			CPU 2 loaded at 0.616483%
+			CPU 3 loaded at 0.799239%
+		Time 0.172s
+		Algorithm MILP
+		2 variables and (#tasks + 2*#computers) constraints
+c.
+	- The new task can't be done with this configuration even though the total load of the tasks is lower than the total capacity of the computers.
+d.
+	- With this problem modification, the algorithm always rejects the tasks with highest load.
+e.
+	- We removed the 3rd constraint in P2a and we changed the objective constraint to:
+		minimize sum(t in T)rt[t]-(sum(c in C)sum(t in T) x_tc[t,c]*rt[t]);
+f.
+	- P2:
+		2 variables and (#tasks + 2*#computers) constraints
+		Time 0.12s
+	- P2a:
+		2 variables and (#tasks + 2*#computers + 1) constraints
+		Time 0.172s
+	- P2b:
+		2 variables and (#tasks + #computers + 1) constraints
+		Time 0.25s

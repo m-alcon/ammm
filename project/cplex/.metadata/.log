@@ -1,0 +1,90 @@
+!SESSION 2018-12-28 19:58:36.062 -----------------------------------------------
+eclipse.buildId=Build 0
+java.fullversion=JRE 1.7.0 IBM J9 2.6 Linux amd64-64 Compressed References 20130617_152572 (JIT enabled, AOT enabled)
+J9VM - R26_Java726_SR5_20130617_1436_B152572
+JIT  - r11.b04_20130528_38954ifx1
+GC   - R26_Java726_SR5_20130617_1436_B152572_CMPRSS
+J9CL - 20130617_152572
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -data /home/malcon/Master/ammm/Project/project/cplex -os linux -ws gtk -arch x86_64 -clean
+
+!ENTRY org.eclipse.equinox.ds 4 0 2018-12-28 19:58:36.735
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: The bundle "org.eclipse.equinox.ds_1.4.1.v20120926-201320 [4]" could not be resolved. Reason: Missing Constraint: Import-Package: org.eclipse.equinox.internal.util.event; version="1.0.0"
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolverError(AbstractBundle.java:1332)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolutionFailureException(AbstractBundle.java:1316)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:323)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:390)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1176)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:559)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:544)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:457)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:243)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:438)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.equinox.registry 2 0 2018-12-28 19:58:39.285
+!MESSAGE The extensions and extension-points from the bundle "ilog.views.eclipse.framework.runtime" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.equinox.registry 2 0 2018-12-28 19:58:39.408
+!MESSAGE The extensions and extension-points from the bundle "ilog.views.eclipse.gantt.runtime" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.equinox.registry 2 0 2018-12-28 19:58:39.543
+!MESSAGE The extensions and extension-points from the bundle "ilog.views.eclipse.chart.runtime" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.ui.ide 4 4 2018-12-28 19:58:39.918
+!MESSAGE -data /valid/path, workspace already set:file:/home/malcon/Master/ammm/Project/project/cplex/
+
+!ENTRY ilog.odms.ide.opllang 1 0 2018-12-28 19:58:41.902
+!MESSAGE concert_wrap.IloInitMT
+
+!ENTRY ilog.odms.ide.opllang 1 0 2018-12-28 19:59:26.021
+!MESSAGE concert_wrap.IloEndMT
+!SESSION 2018-12-28 20:05:06.465 -----------------------------------------------
+eclipse.buildId=Build 0
+java.fullversion=JRE 1.7.0 IBM J9 2.6 Linux amd64-64 Compressed References 20130617_152572 (JIT enabled, AOT enabled)
+J9VM - R26_Java726_SR5_20130617_1436_B152572
+JIT  - r11.b04_20130528_38954ifx1
+GC   - R26_Java726_SR5_20130617_1436_B152572_CMPRSS
+J9CL - 20130617_152572
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -data /home/malcon/Master/ammm/Project/project/cplex -os linux -ws gtk -arch x86_64 -clean
+
+!ENTRY org.eclipse.equinox.ds 4 0 2018-12-28 20:05:07.095
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: The bundle "org.eclipse.equinox.ds_1.4.1.v20120926-201320 [4]" could not be resolved. Reason: Missing Constraint: Import-Package: org.eclipse.equinox.internal.util.event; version="1.0.0"
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolverError(AbstractBundle.java:1332)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.getResolutionFailureException(AbstractBundle.java:1316)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:323)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:390)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1176)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:559)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:544)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:457)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:243)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:438)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.equinox.registry 2 0 2018-12-28 20:05:09.519
+!MESSAGE The extensions and extension-points from the bundle "ilog.views.eclipse.framework.runtime" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.equinox.registry 2 0 2018-12-28 20:05:09.609
+!MESSAGE The extensions and extension-points from the bundle "ilog.views.eclipse.gantt.runtime" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.equinox.registry 2 0 2018-12-28 20:05:09.708
+!MESSAGE The extensions and extension-points from the bundle "ilog.views.eclipse.chart.runtime" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.ui.ide 4 4 2018-12-28 20:05:09.968
+!MESSAGE -data /valid/path, workspace already set:file:/home/malcon/Master/ammm/Project/project/cplex/
+
+!ENTRY ilog.odms.ide.opllang 1 0 2018-12-28 20:05:12.322
+!MESSAGE concert_wrap.IloInitMT
+
+!ENTRY ilog.odms.ide.opllang 1 0 2018-12-28 20:06:26.790
+!MESSAGE concert_wrap.IloEndMT

@@ -100,3 +100,19 @@ subject to{
 
 }
 
+// Objective
+minimize z;
+subject to{
+// Constraint 1
+forall(h in H)
+sum(k in K) x_hk[h,k] == 1;
+// Constraint 2
+forall(t in T, c in C)
+sum(h in H: TH[t][h]==1) sum (k in K: CK[c][k]==1) x_hk[h,k]== nT[t]*x_tc[t,c];
+// Constraint 3
+forall(c in C,k in K: CK[c][k]==1)
+sum(h in H) rh[h]*x_hk[h,k]<=rc[c];
+// Constraint 4
+forall(c in C)
+z >= (1/(nC[c]*rc[c]))*(sum(h in H) sum(k in K: CK[c][k]==1)rh[h]*x_hk[h,k]);
+}

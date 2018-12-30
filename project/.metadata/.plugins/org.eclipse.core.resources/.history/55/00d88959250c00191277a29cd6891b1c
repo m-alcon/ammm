@@ -13,11 +13,11 @@ range D=1..nDrivers;
 range B=1..nBuses;
 int staringTime [s in S]=...;
 int durationTime [s in S]=...;
-int durationDist [s in S]=...;
+//int durationDist [s in S]=...;
 int passangers [s in S]=...;
 int capacity [b in B]=...;
 int costTime [b in B]=...;
-int costDist [b in B]=...;
+//int costDist [b in B]=...;
 int maxTime [d in D]=...;
 int costBM [d in D]=...;
 int costEM [d in D]=...;
@@ -45,8 +45,7 @@ for (var c=1; c<= nCPUs;c++)
 	}
 }
 // Objective
-minimize (sum(s in S) sum(b in B) x_b[s,b]*(durationTime[s]*costTime[b] + durationDist[s]*costTime[b])) + 
-		 (sum(d in D) (minl(x_timed[d],BM[d])*costBM[d] + maxl(x_timed[d]-BM[d],0)*costEM[d]));
+minimize z;
 subject to{
 
 	// Constraint 1
@@ -96,7 +95,23 @@ subject to{
 	  	sum(d in D) x_d[s,d] == 1;
 	  	
 	forall(d in D)
-	  	x_timed[d] == sum(s in S) x_d[s,d]*durationTime[s];
+	  	sum(s in S) x_d[s,d]*durationTime[s] <= x_timed;
 
 }
 
+// Objective
+minimize z;
+subject to{
+// Constraint 1
+forall(h in H)
+sum(k in K) x_hk[h,k] == 1;
+// Constraint 2
+forall(t in T, c in C)
+sum(h in H: TH[t][h]==1) sum (k in K: CK[c][k]==1) x_hk[h,k]== nT[t]*x_tc[t,c];
+// Constraint 3
+forall(c in C,k in K: CK[c][k]==1)
+sum(h in H) rh[h]*x_hk[h,k]<=rc[c];
+// Constraint 4
+forall(c in C)
+z >= (1/(nC[c]*rc[c]))*(sum(h in H) sum(k in K: CK[c][k]==1)rh[h]*x_hk[h,k]);
+}

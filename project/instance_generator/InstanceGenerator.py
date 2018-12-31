@@ -29,18 +29,35 @@ class InstanceGenerator(object):
         fileNamePrefix = self.config.fileNamePrefix
         fileNameExtension = self.config.fileNameExtension
         numInstances = self.config.numInstances
-        
-        numCPUs = self.config.numCPUs
-        minNumCoresPerCPU = self.config.minNumCoresPerCPU
-        maxNumCoresPerCPU = self.config.maxNumCoresPerCPU
-        minCapacityPerCore = self.config.minCapacityPerCore
-        maxCapacityPerCore = self.config.maxCapacityPerCore
-        
-        numTasks = self.config.numTasks
-        minNumThreadsPerTask = self.config.minNumThreadsPerTask
-        maxNumThreadsPerTask = self.config.maxNumThreadsPerTask
-        minResourcesPerThread = self.config.minResourcesPerThread
-        maxResourcesPerThread = self.config.maxResourcesPerThread
+
+        numServices = self.config.numServices
+        numDrivers = self.config.numDrivers
+        numBuses = self.config.numBuses
+
+        minStartTime  = self.config.minStartTime
+        maxStartTime  = self.config.maxStartTime
+        minDurationTime = self.config.minDurationTime
+        maxDurationTime = self.config.maxDurationTime
+        minDurationDistance = self.config.minDurationDistance
+        maxDurationDistance = self.config.maxDurationDistance
+        minPassangers = self.config.minPassangers
+        maxPassangers = self.config.maxPassangers
+
+        minCapacity = self.config.minCapacity
+        maxCapacity = self.config.maxCapacity
+        minCostTime = self.config.minCostTime
+        maxCostTime = self.config.maxCostTime
+        minCostDist = self.config.minCostDist
+        maxCostDist = self.config.maxCostDist
+        minMaxTime = self.config.minMaxTime
+        maxMaxTime = self.config.maxMaxTime
+
+        minCostBM = self.config.minCostBM
+        maxCostBM = self.config.maxCostBM
+        minCostEM = self.config.minCostEM
+        maxCostEM = self.config.maxCostEM
+        minBM = self.config.minBM
+        maxBM = self.config.maxBM
 
         if(not os.path.isdir(instancesDirectory)):
             raise Exception('Directory(%s) does not exist' % instancesDirectory)
@@ -49,68 +66,61 @@ class InstanceGenerator(object):
             instancePath = os.path.join(instancesDirectory, '%s_%d.%s' % (fileNamePrefix, i, fileNameExtension))
             fInstance = open(instancePath, 'w')
 
-            numCores = 0
-            firstCoreIdPerCPU = []
-            numCoresPerCPU = []
-            coreCapacityPerCPU = []
-            for c in xrange(0, numCPUs):
-                numCPUCores = random.randint(minNumCoresPerCPU, maxNumCoresPerCPU)
-                coreCapacity = random.uniform(minCapacityPerCore, maxCapacityPerCore)
-                firstCoreId = numCores
-                firstCoreIdPerCPU.append(firstCoreId)
-                numCoresPerCPU.append(numCPUCores)
-                coreCapacityPerCPU.append(coreCapacity)
-                numCores += numCPUCores
+            fInstance.write('nServices=%d;\n' % numServices)
+            fInstance.write('nDrivers=%d;\n' % numDrivers)
+            fInstance.write('nBuses=%d;\n' % numBuses)
+
+            startTime = []
+            durationTime = []
+            durationDistance = []
+            passangers = []
+            for s in xrange(0, numServices):
+                sTime = random.randint(minStartTime, maxStartTime)
+                dTime = random.randint(minDurationTime, maxDurationTime)
+                dDistance = random.randint(minDurationDistance, maxDurationDistance)
+                passang = random.randint(minPassangers, maxPassangers)
+                startTime.append(sTime)
+                durationTime.append(dTime)
+                durationDistance.append(dDistance)
+                passangers.append(passang)
             
-            numThreads = 0
-            firstThreadIdPerTask = []
-            numThreadsPerTask = []
-            resourcesPerThread = []
-            for t in xrange(0, numTasks):
-                numTaskThreads = random.randint(minNumThreadsPerTask, maxNumThreadsPerTask)
-                firstThreadId = numThreads
-                firstThreadIdPerTask.append(firstThreadId)
-                numThreadsPerTask.append(numTaskThreads)
-                for h in xrange(0, numTaskThreads):
-                    resources = random.uniform(minResourcesPerThread, maxResourcesPerThread)
-                    resourcesPerThread.append(resources)
-                numThreads += numTaskThreads
+            fInstance.write('startTime=[%s];\n' % (' '.join(map(str, startTime))))
+            fInstance.write('durationTime=[%s];\n' % (' '.join(map(str, durationTime))))
+            fInstance.write('durationDist=[%s];\n' % (' '.join(map(str, durationDistance))))
+            fInstance.write('passangers=[%s];\n' % (' '.join(map(str, passangers))))
+
+            capacity = []
+            costTime = []
+            costDist = []
+            for b in xrange(0, numBuses):
+                cap = random.randint(minCapacity, maxCapacity)
+                cTime = random.randint(minCostTime, maxCostTime)
+                cDist = random.randint(minCostDist, maxCostDist)
+                capacity.append(cap)
+                costTime.append(cTime)
+                costDist.append(cDist)
+
+            fInstance.write('capacity=[%s];\n' % (' '.join(map(str, capacity))))
+            fInstance.write('costTime=[%s];\n' % (' '.join(map(str, costTime))))
+            fInstance.write('costDist=[%s];\n' % (' '.join(map(str, costDist))))
+
+            maxTime = []
+            costBM = []
+            costEM = []
+            bm = []
+            for d in xrange(0, numDrivers):
+                mTime = random.randint(minMaxTime, maxMaxTime)
+                cBM = random.randint(minCostBM, maxCostBM)
+                cEM = random.randint(minCostEM, maxCostEM)
+                aux_bm = random.randint(minBM, maxBM)
+                maxTime.append(mTime)
+                costBM.append(cBM)
+                costEM.append(cEM)
+                bm.append(aux_bm)
             
-            fInstance.write('nTasks=%d;\n' % numTasks)
-            fInstance.write('nThreads=%d;\n' % numThreads)
-            fInstance.write('nCPUs=%d;\n' % numCPUs)
-            fInstance.write('nCores=%d;\n' % numCores)
-            
-            # translate vector of floats into vector of strings and concatenate that strings separating them by a single space character
-            fInstance.write('rh=[%s];\n' % (' '.join(map(str, resourcesPerThread))))
-            fInstance.write('rc=[%s];\n' % (' '.join(map(str, coreCapacityPerCPU))))
-            
-            fInstance.write('CK=[\n')
-            for c in xrange(0, numCPUs):
-                cores = [0] * numCores # create a vector of 0's with numCores elements
-                firstCoreId = firstCoreIdPerCPU[c]
-                numCPUCores = numCoresPerCPU[c]
-                
-                # fill appropriate positions with 1's
-                for k in xrange(firstCoreId, firstCoreId + numCPUCores):
-                    cores[k] = 1
-                
-                # translate vector of integers into vector of strings and concatenate that strings separating them by a single space character
-                fInstance.write('\t[%s]\n' % (' '.join(map(str, cores))))
-            fInstance.write('];\n')
-            
-            fInstance.write('TH=[\n')
-            for t in xrange(0, numTasks):
-                threads = [0] * numThreads # create a vector of 0's with numThreads elements
-                firstThreadId = firstThreadIdPerTask[t]
-                numTaskThreads = numThreadsPerTask[t]
-                
-                # fill appropriate positions with 1's
-                for h in xrange(firstThreadId, firstThreadId + numTaskThreads):
-                    threads[h] = 1
-                
-                # translate vector of integers into vector of strings and concatenate that strings separating them by a single space character
-                fInstance.write('\t[%s]\n' % (' '.join(map(str, threads))))
-            fInstance.write('];\n')
+            fInstance.write('maxTime=[%s];\n' % (' '.join(map(str, maxTime))))
+            fInstance.write('costBM=[%s];\n' % (' '.join(map(str, costBM))))
+            fInstance.write('costEM=[%s];\n' % (' '.join(map(str, costEM))))
+            fInstance.write('BM=[%s];\n' % (' '.join(map(str, bm))))
 
             fInstance.close()

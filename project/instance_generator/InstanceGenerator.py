@@ -84,7 +84,7 @@ class InstanceGenerator(object):
                 durationDistance.append(dDistance)
                 passangers.append(passang)
             
-            fInstance.write('startTime=[%s];\n' % (' '.join(map(str, startTime))))
+            fInstance.write('startingTime=[%s];\n' % (' '.join(map(str, startTime))))
             fInstance.write('durationTime=[%s];\n' % (' '.join(map(str, durationTime))))
             fInstance.write('durationDist=[%s];\n' % (' '.join(map(str, durationDistance))))
             fInstance.write('passangers=[%s];\n' % (' '.join(map(str, passangers))))

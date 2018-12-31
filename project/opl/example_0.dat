@@ -1,6 +1,7 @@
 nServices=10;
 nDrivers=10;
 nBuses=10;
+maxBuses=15;
 startingTime=[28 170 99 148 89 9 81 161 65 113];
 durationTime=[28 17 11 29 28 15 18 16 20 23];
 durationDist=[41 54 37 50 45 30 60 23 40 22];

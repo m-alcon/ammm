@@ -11,7 +11,7 @@ int maxBuses=...;
 range S=1..nServices;
 range D=1..nDrivers;
 range B=1..nBuses;
-int staringTime [s in S]=...;
+int startingTime [s in S]=...;
 int durationTime [s in S]=...;
 int durationDist [s in S]=...;
 int passangers [s in S]=...;
@@ -35,15 +35,15 @@ int finalTime[s in S];
 
 
 
-execute{
-for (var s=1; s<= nServices;s++)
-		finalTime[s] = startingTime[s]+durationTime[s]
-
-for (var c=1; c<= nCPUs;c++)
-	for (var k=1; k<=nCores;k++){
-		nC[c]=nC[c]+CK[c][k];
-	}
-}
+//execute{
+//for (var s=1; s<= nServices;s++)
+//		finalTime[s] = startingTime[s]+durationTime[s]
+//
+//for (var c=1; c<= nCPUs;c++)
+//	for (var k=1; k<=nCores;k++){
+//		nC[c]=nC[c]+CK[c][k];
+//	}
+//}
 // Objective
 minimize (sum(s in S) sum(b in B) x_b[s,b]*(durationTime[s]*costTime[b] + durationDist[s]*costTime[b])) + 
 		 (sum(d in D) (minl(x_timed[d],BM[d])*costBM[d] + maxl(x_timed[d]-BM[d],0)*costEM[d]));
@@ -57,11 +57,11 @@ subject to{
 	forall(s1 in S, b in B) {
 		sum(s2 in S: s2 > s1 && (
 			// starting time s2 between duration s1
-			(staringTime[s1] <= staringTime[s2] && finalTime[s1] >= staringTime[s2]) ||
+			(startingTime[s1] <= startingTime[s2] && finalTime[s1] >= startingTime[s2]) ||
 			// final time s2 between duration s1
-			(staringTime[s1] <= finalTime[s2] && finalTime[s1] >= finalTime[s2]) ||
+			(startingTime[s1] <= finalTime[s2] && finalTime[s1] >= finalTime[s2]) ||
 			// duration s1 inside duration s2
-			(staringTime[s1] >= staringTime[s2] && finalTime[s1] <= finalTime[s2])
+			(startingTime[s1] >= startingTime[s2] && finalTime[s1] <= finalTime[s2])
 		)) x_b[s2][b] == 1;
  	}			
 		
@@ -69,11 +69,11 @@ subject to{
 	forall(s1 in S, d in D) {
 	    sum(s2 in S: s2 > s1 && (
 	          // starting time s2 between duration s1
-	          (staringTime[s1] <= staringTime[s2] && finalTime[s1] >= staringTime[s2]) ||
+	          (startingTime[s1] <= startingTime[s2] && finalTime[s1] >= startingTime[s2]) ||
 	          // final time s2 between duration s1
-	          (staringTime[s1] <= finalTime[s2] && finalTime[s1] >= finalTime[s2]) ||
+	          (startingTime[s1] <= finalTime[s2] && finalTime[s1] >= finalTime[s2]) ||
 	          // duration s1 inside duration s2
-	          (staringTime[s1] >= staringTime[s2] && finalTime[s1] <= finalTime[s2])
+	          (startingTime[s1] >= startingTime[s2] && finalTime[s1] <= finalTime[s2])
 	     )) x_d[s2][d] == 1;
 	}
 	// Constraint 3

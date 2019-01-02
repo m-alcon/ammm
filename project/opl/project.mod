@@ -75,14 +75,14 @@ subject to{
 	// Constraint 3
 	
 	forall(d in D)
-	 	sum(s in S) durationTime[s]*x_d[s,d] <= maxTime[d];
+	 	x_timed[d] <= maxTime[d];
 	 
-	 // Constraint 4.1
-//	 forall(b in B)
-//	   ceil((sum(s in S) x_b[s,b])/nServices) == x_usedb[b];
-
+	// Constraint 4.1
 	forall(b in B)
 	   forall(s in S) x_b[s,b] <= x_usedb[b];
+	   
+	
+	forall(b in B) x_usedb[b]<=1;
 	 
 	 // Constraint 4.2
 	 sum(b in B) x_usedb[b] <= maxBuses;

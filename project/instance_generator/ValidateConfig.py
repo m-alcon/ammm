@@ -23,7 +23,7 @@ class ValidateConfig(object):
     def validate(data):
         # Validate that mandatory input parameters were found
         for paramName in ['instancesDirectory', 'fileNamePrefix', 'fileNameExtension', 'numInstances',
-                          'numServices', 'numDrivers', 'numBuses', 'minStartTime', 'maxStartTime',
+                          'numServices', 'numDrivers', 'numBuses', 'maxBuses', 'minStartTime', 'maxStartTime',
                           'minDurationTime', 'maxDurationTime', 'minDurationDistance', 'maxDurationDistance',
                           'minPassangers', 'maxPassangers', 'minCapacity', 'maxCapacity', 'minCostTime',
                           'maxCostTime', 'minCostDist', 'maxCostDist', 'minMaxTime', 'maxMaxTime', 'minCostBM',
@@ -51,6 +51,10 @@ class ValidateConfig(object):
         numBuses = data.numBuses
         if(not isinstance(numBuses, (int, long)) or (numBuses <= 0)):
             raise Exception('numBuses(%s) has to be a positive integer value.' % str(numBuses))
+
+        maxBuses = data.maxBuses
+        if(not isinstance(maxBuses, (int, long)) or (maxBuses <= 0)):
+            raise Exception('maxBuses(%s) has to be a positive integer value.' % str(maxBuses))
 
         numDrivers = data.numDrivers
         if(not isinstance(numDrivers, (int, long)) or (numDrivers <= 0)):

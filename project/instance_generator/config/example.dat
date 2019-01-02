@@ -5,8 +5,10 @@ fileNameExtension = dat;
 numInstances = 10;
 
 numServices = 10;
-numDrivers = 10;
-numBuses = 10;
+numDrivers = 15;
+numBuses = 15;
+maxBuses = 12;
+
 minStartTime = 1;
 maxStartTime = 200;
 minDurationTime = 10;

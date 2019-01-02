@@ -33,6 +33,7 @@ class InstanceGenerator(object):
         numServices = self.config.numServices
         numDrivers = self.config.numDrivers
         numBuses = self.config.numBuses
+        maxBuses = self.config.maxBuses
 
         minStartTime  = self.config.minStartTime
         maxStartTime  = self.config.maxStartTime
@@ -69,6 +70,7 @@ class InstanceGenerator(object):
             fInstance.write('nServices=%d;\n' % numServices)
             fInstance.write('nDrivers=%d;\n' % numDrivers)
             fInstance.write('nBuses=%d;\n' % numBuses)
+            fInstance.write('maxBuses=%d;\n' % maxBuses)
 
             startTime = []
             durationTime = []

@@ -1,0 +1,35 @@
+# file name: instances/instance_XX.dat
+instancesDirectory = ../opl/instances;
+fileNamePrefix = chungus;
+fileNameExtension = dat;
+numInstances = 5;
+
+numServices = 160;
+numDrivers = 120;
+numBuses = 160;
+maxBuses = 120;
+
+minStartTime = 0;
+maxStartTime = 350;
+minDurationTime = 20;
+maxDurationTime = 60;
+minDurationDistance = 2;
+maxDurationDistance = 20;
+minPassangers = 2;
+maxPassangers = 50;
+
+minCapacity = 10;
+maxCapacity = 60;
+minCostTime = 1;
+maxCostTime = 2;
+minCostDist = 2;
+maxCostDist = 5;
+
+minMaxTime = 40;
+maxMaxTime = 80;
+minCostBM = 5;
+maxCostBM = 8;
+minCostEM = 8;
+maxCostEM = 12;
+minBM = 20;
+maxBM = 40;

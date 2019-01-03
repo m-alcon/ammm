@@ -1,0 +1,35 @@
+# file name: instances/instance_XX.dat
+instancesDirectory = ../opl/instances;
+fileNamePrefix = medium;
+fileNameExtension = dat;
+numInstances = 5;
+
+numServices = 50;
+numDrivers = 40;
+numBuses = 50;
+maxBuses = 40;
+
+minStartTime = 0;
+maxStartTime = 300;
+minDurationTime = 20;
+maxDurationTime = 60;
+minDurationDistance = 2;
+maxDurationDistance = 20;
+minPassangers = 2;
+maxPassangers = 50;
+
+minCapacity = 10;
+maxCapacity = 60;
+minCostTime = 1;
+maxCostTime = 2;
+minCostDist = 2;
+maxCostDist = 5;
+
+minMaxTime = 40;
+maxMaxTime = 80;
+minCostBM = 5;
+maxCostBM = 8;
+minCostEM = 8;
+maxCostEM = 12;
+minBM = 20;
+maxBM = 40;

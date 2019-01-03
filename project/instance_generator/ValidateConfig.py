@@ -61,7 +61,7 @@ class ValidateConfig(object):
             raise Exception('numDrivers(%s) has to be a positive integer value.' % str(numDrivers))
 
         minStartTime = data.minStartTime
-        if(not isinstance(minStartTime, (int, long)) or (minStartTime <= 0)):
+        if(not isinstance(minStartTime, (int, long)) or (minStartTime < 0)):
             raise Exception('minStartTime(%s) has to be a positive integer value.' % str(minStartTime))
 
         maxStartTime = data.maxStartTime

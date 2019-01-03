@@ -96,8 +96,8 @@ class InstanceGenerator(object):
             costDist = []
             for b in xrange(0, numBuses):
                 cap = random.randint(minCapacity, maxCapacity)
-                cTime = random.randint(minCostTime, maxCostTime)
-                cDist = random.randint(minCostDist, maxCostDist)
+                cTime = round(random.uniform(minCostTime, maxCostTime),2)
+                cDist = round(random.uniform(minCostDist, maxCostDist),2)
                 capacity.append(cap)
                 costTime.append(cTime)
                 costDist.append(cDist)
@@ -112,8 +112,8 @@ class InstanceGenerator(object):
             bm = []
             for d in xrange(0, numDrivers):
                 mTime = random.randint(minMaxTime, maxMaxTime)
-                cBM = random.randint(minCostBM, maxCostBM)
-                cEM = random.randint(minCostEM, maxCostEM)
+                cBM = round(random.uniform(minCostBM, maxCostBM),2)
+                cEM = round(random.uniform(minCostEM, maxCostEM),2)
                 aux_bm = random.randint(minBM, maxBM)
                 maxTime.append(mTime)
                 costBM.append(cBM)

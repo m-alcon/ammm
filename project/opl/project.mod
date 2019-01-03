@@ -16,11 +16,11 @@ int durationTime [s in S]=...;
 int durationDist [s in S]=...;
 int passangers [s in S]=...;
 int capacity [b in B]=...;
-int costTime [b in B]=...;
-int costDist [b in B]=...;
+float costTime [b in B]=...;
+float costDist [b in B]=...;
 int maxTime [d in D]=...;
-int costBM [d in D]=...;
-int costEM [d in D]=...;
+float costBM [d in D]=...;
+float costEM [d in D]=...;
 int BM [d in D]=...;
 
 

@@ -30,7 +30,7 @@ class ValidateConfig(object):
                           'maxCostBM', 'minCostEM', 'maxCostEM', 'minBM', 'maxBM']:
             if(not data.__dict__.has_key(paramName)):
                 raise Exception('Parameter(%s) not contained in Configuration' % str(paramName))
-        
+
         instancesDirectory = data.instancesDirectory
         if(len(instancesDirectory) == 0): raise Exception('Value for instancesDirectory is empty')
 
@@ -147,4 +147,3 @@ class ValidateConfig(object):
         maxBM = data.maxBM
         if(not isinstance(maxBM, (int, long)) or (maxBM <= 0)):
             raise Exception('maxBM(%s) has to be a positive integer value.' % str(maxBM))
-        

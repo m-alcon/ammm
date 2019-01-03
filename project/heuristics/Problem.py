@@ -24,7 +24,7 @@ from Driver import Driver
 class Problem(object):
     def __init__(self, inputData):
         self.inputData = inputData
-        
+
         nServices = self.inputData.nServices
         nBuses = self.inputData.nBuses
         nDrivers = self.inputData.nDrivers
@@ -44,7 +44,7 @@ class Problem(object):
         self.services = []
         for i in range(nServices):
             self.services.append(
-                Service(startingTime[i],durationDist[i],durationDist[i],passangers[i]))
+                Service(startingTime[i],durationTime[i],durationDist[i],passangers[i]))
 
         self.buses = []
         Bus.maxBuses = maxBuses
@@ -60,38 +60,33 @@ class Problem(object):
 
     def getBuses(self):
         return(self.buses)
-    
+
     def getDrivers(self):
         return(self.drivers)
 
     def checkInstance(self):
-        totalCapacityCPUs = 0.0
-        maxCoreCapacity = 0.0
-        for cpu in self.cpus:
-            capacity = cpu.getTotalCapacity()
-            totalCapacityCPUs += capacity
-            for coreId in cpu.getCoreIds():
-                capacity = cpu.getTotalCapacityByCore(coreId)
-                maxCoreCapacity = max(maxCoreCapacity, capacity)
-                
-        totalResourcesTasks = 0.0
-        for task in self.tasks:
-            resources = task.getTotalResources()
-            totalResourcesTasks += resources
-            
-            threadIds = task.getThreadIds()
-            for threadId in threadIds:
-                threadRes = task.getResourcesByThread(threadId)
-                if(threadRes > maxCoreCapacity): return(False)
-            
-            feasible = False
-            for cpu in self.cpus:
-                capacity = cpu.getTotalCapacity()
-                feasible = (resources < capacity)
-                if(feasible): break
-            
-            if(not feasible): return(False)
-        
-        if(totalCapacityCPUs < totalResourcesTasks): return(False)
-        
-        return(True)
+
+        maxPassangers = 0
+        totalDurationTime = 0
+        for service in self.services:
+            totalDurationTime += service.durationTime
+            maxPassangers = max(maxPassangers,service.passangers)
+
+        usefulBuses = 0
+        for bus in self.buses:
+            if maxPassangers > bus.capacity:
+                usefulBuses += 1
+
+        if usefulBuses == 0:
+            print('One service can\'t be served by any bus because of not enough capacity (%d).'%maxPassangers)
+            return False
+
+        totalMaxMinutes = 0
+        for driver in self.drivers:
+            totalMaxMinutes += driver.maxTime
+
+        if totalDurationTime > totalMaxMinutes:
+            print('Not enough working minutes for the drivers.')
+            return False
+
+        return True

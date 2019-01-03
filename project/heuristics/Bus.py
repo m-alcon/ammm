@@ -6,3 +6,9 @@ class Bus(object):
         self.capacity = capacity
         self.costTime = costTime
         self.costDistance = costDistance
+
+    def getCapacity(self):
+        return self.capacity
+
+    def getMaxBuses(self):
+        return self.maxBuses

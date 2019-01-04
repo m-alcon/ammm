@@ -4,10 +4,10 @@ fileNamePrefix = big;
 fileNameExtension = dat;
 numInstances = 5;
 
-numServices = 70;
-numDrivers = 55;
-numBuses = 70;
-maxBuses = 55;
+numServices = 100;
+numDrivers = 70;
+numBuses = 90;
+maxBuses = 70;
 
 minStartTime = 0;
 maxStartTime = 300;

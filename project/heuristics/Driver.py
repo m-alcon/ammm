@@ -5,3 +5,6 @@ class Driver(object):
         self.costBM = costBM
         self.costEM = costEM
         self.bm = bm
+
+    def getMaxTime(self):
+        return self.maxTime

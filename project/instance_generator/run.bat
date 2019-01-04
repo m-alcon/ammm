@@ -22,6 +22,6 @@ REM along with this program.  If not, see <http://www.gnu.org/licenses/>.
 REM Python 2.7 is required.
 REM This script assumes that Python is installed to C:\Python27
 
-C:/Python27/python.exe Main.py config/big_chungus.dat
+C:/Python27/python.exe Main.py config/medium.dat
 
 pause

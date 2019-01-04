@@ -78,37 +78,70 @@ class ValidateInputData(object):
             if(not isinstance(value, (int, long, float)) or (value < 0)):
                 raise Exception('Invalid parameter value(%s) in durationDist. Should be a float greater or equal than zero.' % str(value))
 
-        # Validate rc
-        rc = data.rc
-        if(len(rc) != nCPUs):
-            raise Exception('Size of rc(%d) does not match with value of nCPUs(%d).' % (len(rc), nCPUs))
+        # Validate passangers
+        passangers = data.passangers
+        if(len(passangers) != nServices):
+            raise Exception('Size of passangers(%d) does not match with value of nServices(%d).' % (len(passangers), nServices))
 
-        for value in rc:
+        for value in passangers:
             if(not isinstance(value, (int, long, float)) or (value < 0)):
-                raise Exception('Invalid parameter value(%s) in rc. Should be a float greater or equal than zero.' % str(value))
+                raise Exception('Invalid parameter value(%s) in passangers. Should be a float greater or equal than zero.' % str(value))
 
-        # Validate CK
-        CK = data.CK
-        if(len(CK) != nCPUs):
-            raise Exception('Size of first dimension of CK(%d) does not match with value of nCPUs(%d).' % (len(CK), nCPUs))
+        # Validate capacity
+        capacity = data.capacity
+        if(len(capacity) != nBuses):
+            raise Exception('Size of capacity(%d) does not match with value of nBuses(%d).' % (len(capacity), nBuses))
 
-        for ckEntry in CK:
-            if(len(ckEntry) != nCores):
-                raise Exception('Size of second dimension of CK(%d) does not match with value of nCores(%d).' % (len(ckEntry), nCores))
+        # Validate costTime
+        costTime = data.costTime
+        if(len(costTime) != nBuses):
+            raise Exception('Size of costTime(%d) does not match with value of nBuses(%d).' % (len(costTime), nBuses))
 
-            for value in ckEntry:
-                if(value not in [0, 1]):
-                    raise Exception('Invalid parameter value(%s) in CK. Should be an integer value [0, 1].' % str(value))
+        for value in costTime:
+            if(not isinstance(value, (int, long, float)) or (value < 0)):
+                raise Exception('Invalid parameter value(%s) in costTime. Should be a float greater or equal than zero.' % str(value))
 
-        # Validate TH
-        TH = data.TH
-        if(len(TH) != nTasks):
-            raise Exception('Size of first dimension of TH(%d) does not match with value of nTasks(%d).' % (len(TH), nTasks))
+        # Validate costDist
+        costDist = data.costDist
+        if(len(costDist) != nBuses):
+            raise Exception('Size of costDist(%d) does not match with value of nBuses(%d).' % (len(costDist), nBuses))
 
-        for thEntry in TH:
-            if(len(thEntry) != nThreads):
-                raise Exception('Size of second dimension of TH(%d) does not match with value of nThreads(%d).' % (len(thEntry), nThreads))
+        for value in costDist:
+            if(not isinstance(value, (int, long, float)) or (value < 0)):
+                raise Exception('Invalid parameter value(%s) in costDist. Should be a float greater or equal than zero.' % str(value))
 
-            for value in thEntry:
-                if(value not in [0, 1]):
-                    raise Exception('Invalid parameter value(%s) in TH. Should be an integer value [0, 1].' % str(value))
+        # Validate maxTime
+        maxTime = data.maxTime
+        if(len(maxTime) != nDrivers):
+            raise Exception('Size of maxTime(%d) does not match with value of nDrivers(%d).' % (len(maxTime), nDrivers))
+
+        for value in maxTime:
+            if(not isinstance(value, (int, long, float)) or (value < 0)):
+                raise Exception('Invalid parameter value(%s) in maxTime. Should be a float greater or equal than zero.' % str(value))
+
+        # Validate costBM
+        costBM = data.costBM
+        if(len(costBM) != nDrivers):
+            raise Exception('Size of costBM(%d) does not match with value of nDrivers(%d).' % (len(costBM), nDrivers))
+
+        for value in costBM:
+            if(not isinstance(value, (int, long, float)) or (value < 0)):
+                raise Exception('Invalid parameter value(%s) in costBM. Should be a float greater or equal than zero.' % str(value))
+
+        # Validate costEM
+        costEM = data.costEM
+        if(len(costEM) != nDrivers):
+            raise Exception('Size of costEM(%d) does not match with value of nDrivers(%d).' % (len(costEM), nDrivers))
+
+        for value in costEM:
+            if(not isinstance(value, (int, long, float)) or (value < 0)):
+                raise Exception('Invalid parameter value(%s) in costEM. Should be a float greater or equal than zero.' % str(value))
+
+        # Validate maxTime
+        BM = data.BM
+        if(len(BM) != nDrivers):
+            raise Exception('Size of BM(%d) does not match with value of nDrivers(%d).' % (len(BM), nDrivers))
+
+        for value in BM:
+            if(not isinstance(value, (int, long, float)) or (value < 0)):
+                raise Exception('Invalid parameter value(%s) in BM. Should be a float greater or equal than zero.' % str(value))

@@ -5,3 +5,12 @@ class Service(object):
         self.durationTime = durationTime
         self.durationDist = durationDist
         self.passangers = passangers
+
+    def itOverlapsInTime(self, start, end):
+        finalTime = self.startingTime + self.durationTime
+
+    def getPassangers(self):
+        return self.passangers
+
+    def getDurationTime(self):
+        return self.durationTime

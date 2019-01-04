@@ -14,7 +14,7 @@ range B=1..nBuses;
 int startingTime [s in S]=...;
 int durationTime [s in S]=...;
 int durationDist [s in S]=...;
-int passangers [s in S]=...;
+int passengers [s in S]=...;
 int capacity [b in B]=...;
 float costTime [b in B]=...;
 float costDist [b in B]=...;
@@ -46,7 +46,7 @@ minimize (sum(s in S) sum(b in B) x_b[s,b]*(durationTime[s]*costTime[b] + durati
 subject to{
 
 	// Constraint 1
-	forall(s in S, b in B: passangers[s] > capacity[b])
+	forall(s in S, b in B: passengers[s] > capacity[b])
 		x_b[s,b] == 0;
 	
 	// Constraint 2.b

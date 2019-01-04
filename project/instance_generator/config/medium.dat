@@ -15,8 +15,8 @@ minDurationTime = 20;
 maxDurationTime = 60;
 minDurationDistance = 2;
 maxDurationDistance = 20;
-minPassangers = 2;
-maxPassangers = 50;
+minpassengers = 2;
+maxpassengers = 50;
 
 minCapacity = 10;
 maxCapacity = 60;

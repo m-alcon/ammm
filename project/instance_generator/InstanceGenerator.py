@@ -41,8 +41,8 @@ class InstanceGenerator(object):
         maxDurationTime = self.config.maxDurationTime
         minDurationDistance = self.config.minDurationDistance
         maxDurationDistance = self.config.maxDurationDistance
-        minPassangers = self.config.minPassangers
-        maxPassangers = self.config.maxPassangers
+        minpassengers = self.config.minpassengers
+        maxpassengers = self.config.maxpassengers
 
         minCapacity = self.config.minCapacity
         maxCapacity = self.config.maxCapacity
@@ -75,21 +75,21 @@ class InstanceGenerator(object):
             startTime = []
             durationTime = []
             durationDistance = []
-            passangers = []
+            passengers = []
             for s in xrange(0, numServices):
                 sTime = random.randint(minStartTime, maxStartTime)
                 dTime = random.randint(minDurationTime, maxDurationTime)
                 dDistance = random.randint(minDurationDistance, maxDurationDistance)
-                passang = random.randint(minPassangers, maxPassangers)
+                passang = random.randint(minpassengers, maxpassengers)
                 startTime.append(sTime)
                 durationTime.append(dTime)
                 durationDistance.append(dDistance)
-                passangers.append(passang)
+                passengers.append(passang)
             
             fInstance.write('startingTime=[%s];\n' % (' '.join(map(str, startTime))))
             fInstance.write('durationTime=[%s];\n' % (' '.join(map(str, durationTime))))
             fInstance.write('durationDist=[%s];\n' % (' '.join(map(str, durationDistance))))
-            fInstance.write('passangers=[%s];\n' % (' '.join(map(str, passangers))))
+            fInstance.write('passengers=[%s];\n' % (' '.join(map(str, passengers))))
 
             capacity = []
             costTime = []

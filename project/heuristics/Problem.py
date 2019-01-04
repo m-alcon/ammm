@@ -32,7 +32,7 @@ class Problem(object):
         startingTime = self.inputData.startingTime
         durationTime = self.inputData.durationTime
         durationDist = self.inputData.durationDist
-        passangers = self.inputData.passangers
+        passengers = self.inputData.passengers
         capacity = self.inputData.capacity
         costTime = self.inputData.costTime
         costDist = self.inputData.costDist
@@ -44,7 +44,7 @@ class Problem(object):
         self.services = []
         for i in range(nServices):
             self.services.append(
-                Service(startingTime[i],durationTime[i],durationDist[i],passangers[i]))
+                Service(startingTime[i],durationTime[i],durationDist[i],passengers[i]))
 
         self.buses = []
         Bus.maxBuses = maxBuses
@@ -66,19 +66,19 @@ class Problem(object):
 
     def checkInstance(self):
 
-        maxPassangers = 0
+        maxpassengers = 0
         totalDurationTime = 0
         for service in self.services:
             totalDurationTime += service.durationTime
-            maxPassangers = max(maxPassangers,service.passangers)
+            maxpassengers = max(maxpassengers,service.passengers)
 
         usefulBuses = 0
         for bus in self.buses:
-            if maxPassangers > bus.capacity:
+            if maxpassengers > bus.capacity:
                 usefulBuses += 1
 
         if usefulBuses == 0:
-            print('One service can\'t be served by any bus because of not enough capacity (%d).'%maxPassangers)
+            print('One service can\'t be served by any bus because of not enough capacity (%d).'%maxpassengers)
             return False
 
         totalMaxMinutes = 0

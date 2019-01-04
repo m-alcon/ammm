@@ -25,7 +25,7 @@ class ValidateConfig(object):
         for paramName in ['instancesDirectory', 'fileNamePrefix', 'fileNameExtension', 'numInstances',
                           'numServices', 'numDrivers', 'numBuses', 'maxBuses', 'minStartTime', 'maxStartTime',
                           'minDurationTime', 'maxDurationTime', 'minDurationDistance', 'maxDurationDistance',
-                          'minPassangers', 'maxPassangers', 'minCapacity', 'maxCapacity', 'minCostTime',
+                          'minpassengers', 'maxpassengers', 'minCapacity', 'maxCapacity', 'minCostTime',
                           'maxCostTime', 'minCostDist', 'maxCostDist', 'minMaxTime', 'maxMaxTime', 'minCostBM',
                           'maxCostBM', 'minCostEM', 'maxCostEM', 'minBM', 'maxBM']:
             if(not data.__dict__.has_key(paramName)):
@@ -84,13 +84,13 @@ class ValidateConfig(object):
         if(not isinstance(maxDurationDistance, (int, long)) or (maxDurationDistance <= 0)):
             raise Exception('maxDurationDistance(%s) has to be a positive integer value.' % str(maxDurationDistance))
 
-        minPassangers = data.minPassangers
-        if(not isinstance(minPassangers, (int, long)) or (minPassangers <= 0)):
-            raise Exception('minPassangers(%s) has to be a positive integer value.' % str(minPassangers))
+        minpassengers = data.minpassengers
+        if(not isinstance(minpassengers, (int, long)) or (minpassengers <= 0)):
+            raise Exception('minpassengers(%s) has to be a positive integer value.' % str(minpassengers))
 
-        maxPassangers = data.maxPassangers
-        if(not isinstance(maxPassangers, (int, long)) or (maxPassangers <= 0)):
-            raise Exception('maxPassangers(%s) has to be a positive integer value.' % str(maxPassangers))
+        maxpassengers = data.maxpassengers
+        if(not isinstance(maxpassengers, (int, long)) or (maxpassengers <= 0)):
+            raise Exception('maxpassengers(%s) has to be a positive integer value.' % str(maxpassengers))
 
         minCapacity = data.minCapacity
         if(not isinstance(minCapacity, (int, long)) or (minCapacity <= 0)):

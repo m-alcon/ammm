@@ -26,7 +26,7 @@ class ValidateInputData(object):
     def validate(data):
         # Validate that all input parameters were found
         for paramName in ['nServices', 'nBuses', 'nDrivers', 'maxBuses', 'startingTime',
-                    'durationTime', 'durationDist', 'passangers', 'capacity', 'costTime',
+                    'durationTime', 'durationDist', 'passengers', 'capacity', 'costTime',
                     'costDist', 'maxTime', 'costBM', 'costEM', 'bm']:
             if(not data.__dict__.has_key(paramName)):
                 raise Exception('Parameter/Set(%s) not contained in Input Data' % str(paramName))
@@ -78,14 +78,14 @@ class ValidateInputData(object):
             if(not isinstance(value, (int, long, float)) or (value < 0)):
                 raise Exception('Invalid parameter value(%s) in durationDist. Should be a float greater or equal than zero.' % str(value))
 
-        # Validate passangers
-        passangers = data.passangers
-        if(len(passangers) != nServices):
-            raise Exception('Size of passangers(%d) does not match with value of nServices(%d).' % (len(passangers), nServices))
+        # Validate passengers
+        passengers = data.passengers
+        if(len(passengers) != nServices):
+            raise Exception('Size of passengers(%d) does not match with value of nServices(%d).' % (len(passengers), nServices))
 
-        for value in passangers:
+        for value in passengers:
             if(not isinstance(value, (int, long, float)) or (value < 0)):
-                raise Exception('Invalid parameter value(%s) in passangers. Should be a float greater or equal than zero.' % str(value))
+                raise Exception('Invalid parameter value(%s) in passengers. Should be a float greater or equal than zero.' % str(value))
 
         # Validate capacity
         capacity = data.capacity

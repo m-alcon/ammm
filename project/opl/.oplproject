@@ -4,7 +4,7 @@
 		<config category="opl" default="true" name="Configuraci&amp;#243;n 1">
 			<ref name="project.mod" type="model">
 			</ref>
-			<ref name="instances/medium_1.dat" type="data">
+			<ref name="instances/chungus_4.dat" type="data">
 			</ref>
 		</config>
 	</configs>

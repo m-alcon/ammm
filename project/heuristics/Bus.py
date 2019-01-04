@@ -12,3 +12,9 @@ class Bus(object):
 
     def getMaxBuses(self):
         return self.maxBuses
+
+    def getCostTime(self):
+        return self.costTime
+
+    def getCostDistance(self):
+        return self.costDistance

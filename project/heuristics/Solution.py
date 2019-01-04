@@ -35,7 +35,7 @@ class Solution(Problem):
     def createEmptySolution(config, problem):
         solution = Solution(problem.inputData)
         solution.setVerbose(config.verbose)
-        return(solution)
+        return solution
 
     def __init__(self, inputData):
         super(Solution, self).__init__(inputData)
@@ -60,7 +60,26 @@ class Solution(Problem):
         self.feasible = False
 
     def isFeasible(self):
-        return(self.feasible)
+        return self.feasible
+
+    def calculateActualCost(self):
+        busCost = 0
+        for serviceId,busId in self.serviceIdToBusId.items():
+            service = self.services[serviceId]
+            bus = self.buses[busId]
+            busCost += service.getDurationTime()*bus.getCostTime()
+            busCost += service.getDurationDist()*bus.getCostDist()
+
+        driverCost = 0
+        for driverId,timeWorked in self.driverIdToTimeWorked.items():
+            driver = self.drivers[driverId]
+            if timeWorked > driver.getBM():
+                driverCost += driver.getBM()*driver.getCostBM()
+                driverCost += (timeWorked-driver.getBM())*driver.getCostEM()
+            else:
+                driverCost += timeWorked*driver.getCostBM()
+
+        return busCost + driverCost
 
     def isFeasibleToAssignServiceToBus(self, serviceId, busId):
         if serviceId in self.serviceIdToBusId:
@@ -244,17 +263,21 @@ class Solution(Problem):
 
     def findBestFeasibleAssignment(self, serviceId):
         bestAssignment = Assignment(serviceId, None, None)
-        for cpu in self.cpus:
-            cpuId = cpu.getId()
-            feasible = self.assign(serviceId, cpuId)
-            if(not feasible): continue
+        bestCost = float('infinity')
+        for bus in self.buses:
+            for driver in self.drivers:
+                feasible = self.assign(serviceId, busId, driverId)
+                if not feasible: continue
 
-            curHighestLoad = self.getHighestLoad()
-            if(bestAssignment.highestLoad > curHighestLoad):
-                bestAssignment.cpuId = cpuId
-                bestAssignment.highestLoad = curHighestLoad
+                actualCost = self.calculateActualCost()
+                if bestCost > actualCost:
+                    bestAssignment.busId = busId
+                    bestAssignment.driverId = driverId
+                    bestCost = actualCost
+                elif bestCost == actualCost:
+                    
 
-            self.unassign(serviceId, cpuId)
+                self.unassign(serviceId, busId)
 
         return bestAssignment
 

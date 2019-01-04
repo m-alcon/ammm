@@ -8,3 +8,12 @@ class Driver(object):
 
     def getMaxTime(self):
         return self.maxTime
+
+    def getCostBM():
+        return self.costBM
+
+    def getCostEM():
+        return self.costEM
+
+    def getBM():
+        return self.bm

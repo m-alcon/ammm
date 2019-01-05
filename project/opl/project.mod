@@ -84,7 +84,7 @@ subject to{
 	   forall(s in S) x_b[s,b] <= x_usedb[b];
 	   
 	
-	forall(b in B) x_usedb[b]<=1;
+	//forall(b in B) x_usedb[b]<=1;
 	 
 	 // Constraint 4.2
 	 sum(b in B) x_usedb[b] <= maxBuses;

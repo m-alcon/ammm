@@ -1,6 +1,7 @@
 class Driver(object):
 
-    def __init__(self, maxTime, costBM, costEM, bm):
+    def __init__(self, selfId, maxTime, costBM, costEM, bm):
+        self.id = selfId
         self.maxTime = maxTime
         self.costBM = costBM
         self.costEM = costEM
@@ -17,3 +18,6 @@ class Driver(object):
 
     def getBM():
         return self.bm
+
+    def getId():
+        return self.id

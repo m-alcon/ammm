@@ -44,7 +44,7 @@ class Problem(object):
         self.services = []
         for i in range(nServices):
             self.services.append(
-                Service(startingTime[i],durationTime[i],durationDist[i],passengers[i]))
+                Service(i,startingTime[i],durationTime[i],durationDist[i],passengers[i]))
 
         self.buses = []
         Bus.maxBuses = maxBuses

@@ -6,9 +6,12 @@ class Service(object):
         self.durationDist = durationDist
         self.passengers = passengers
 
-    def itOverlapsInTime(self, start, end):
-        finalTime = self.startingTime + self.durationTime
-        if start > finalTime or end < self.startingTime:
+    def itOverlapsInTime(self, startingTime2, finalTime2):
+        startingTime1 = self.startingTime
+        finalTime1 = startingTime1 + self.durationTime
+        if  (startingTime1 <= startingTime2 and finalTime1 >= startingTime2) or
+            (startingTime1 <= finalTime2 and finalTime1 >= finalTime2) or
+            (startingTime1 >= startingTime2 and finalTime1 <= finalTime2):
             return False
 
         return True

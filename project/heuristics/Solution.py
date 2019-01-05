@@ -27,6 +27,8 @@ class Assignment(object):
         self.serviceId = serviceId
         self.busId = busId
         self.driverId = driverId
+        #self.totalCost = totalCost
+        #self.busCapacity = busCapacity
 
 # Solution includes functions to manage the solution, to perform feasibility
 # checks and to dump the solution into a string or file.
@@ -264,70 +266,91 @@ class Solution(Problem):
     def findBestFeasibleAssignment(self, serviceId):
         bestAssignment = Assignment(serviceId, None, None)
         bestCost = float('infinity')
-        for bus in self.buses:
-            for driver in self.drivers:
+        bestCapacity = float('infinity')
+        for busId,bus in enumerate(self.buses):
+            for driverId,driver in enumerate(self.drivers):
                 feasible = self.assign(serviceId, busId, driverId)
                 if not feasible: continue
 
                 actualCost = self.calculateActualCost()
-                if bestCost > actualCost:
+                if (bestCost > actualCost) or (bestCost == actualCost and bus.getCapacity() < bestCapacity):
                     bestAssignment.busId = busId
                     bestAssignment.driverId = driverId
                     bestCost = actualCost
-                elif bestCost == actualCost:
-                    
+                    bestCapacity = bus.getCapacity()
 
-                self.unassign(serviceId, busId)
+                self.unassign(serviceId, busId, driverId)
 
         return bestAssignment
 
     def __str__(self):  # toString equivalent
-        nTasks = self.inputData.nTasks
-        nThreads = self.inputData.nThreads
-        nCPUs = self.inputData.nCPUs
-        nCores = self.inputData.nCores
+        nServices = self.inputData.nServices
+        nBuses = self.inputData.nBuses
+        nDrivers = self.inputData.nDrivers
 
-        strSolution = 'z = %10.8f;\n' % self.highestLoad
+        strSolution = 'cost = %10.8f;\n' % self.calculateActualCost()
 
-        # Xhk: decision variable containing the assignment of threads to cores
+        # x_b: decision variable containing the assignment of buses to services
         # pre-fill with no assignments (all-zeros)
-        xhk = []
-        for h in xrange(0, nThreads):   # h = 0..(nThreads-1)
-            xhkEntry = [0] * nCores     # results in a vector of 0's with nCores elements
-            xhk.append(xhkEntry)
+        x_b = [[0]*nBuses for _ in range(nServices)]
 
-        # iterate over hash table threadIdToCoreId and fill in xhk
-        for threadId,coreId in self.threadIdToCoreId.iteritems():
-            xhk[threadId][coreId] = 1
+        # iterate over hash table serviceIdToBusId and fill in xhk
+        for serviceId,busId in self.serviceIdToBusId.items():
+            x_b[serviceId][busId] = 1
 
-        strSolution += 'xhk = [\n'
-        for xhkEntry in xhk:
+        strSolution += 'x_b = [\n'
+        for entry in x_b:
             strSolution += '\t[ '
-            for xhkValue in xhkEntry:
-                strSolution += str(xhkValue) + ' '
+            for value in entry:
+                strSolution += str(value) + ' '
             strSolution += ']\n'
         strSolution += '];\n'
 
-        # Xtc: decision variable containing the assignment of tasks to CPUs
+        # x_d: decision variable containing the assignment of drivers to services
         # pre-fill with no assignments (all-zeros)
-        xtc = []
-        for t in xrange(0, nTasks):     # t = 0..(nTasks-1)
-            xtcEntry = [0] * nCPUs      # results in a vector of 0's with nCPUs elements
-            xtc.append(xtcEntry)
+        x_d = [[0]*nDrivers for _ in range(nServices)]
 
-        # iterate over hash table taskIdToCPUId and fill in xtc
-        for taskId,cpuId in self.taskIdToCPUId.iteritems():
-            xtc[taskId][cpuId] = 1
+        # iterate over hash table serviceIdToDriverId and fill in xhk
+        for serviceId,driverId in self.serviceIdToDriverId.items():
+            x_d[serviceId][driverId] = 1
 
-        strSolution += 'xtc = [\n'
-        for xtcEntry in xtc:
+        strSolution += 'x_d = [\n'
+        for entry in x_d:
             strSolution += '\t[ '
-            for xtcValue in xtcEntry:
-                strSolution += str(xtcValue) + ' '
+            for value in entry:
+                strSolution += str(value) + ' '
             strSolution += ']\n'
         strSolution += '];\n'
 
-        return(strSolution)
+        # x_usedb: decision variable containing the used buses
+        # pre-fill with no assignments (all-zeros)
+        x_usedb = [0]*nBuses
+
+        # iterate over hash table serviceIdToDriverId and fill in xhk
+        for _,busId in self.serviceIdToBusId.items():
+            x_usedb[busId] = 1
+
+        strSolution += 'x_usedb = [\n'
+        for value in x_usedb:
+            strSolution += '\t[ '
+                strSolution += str(value) + ' '
+        strSolution += '];\n'
+
+        # x_timed: decision variable containing the used buses
+        # pre-fill with no assignments (all-zeros)
+        x_timed = [0]*nDrivers
+
+        # iterate over hash table serviceIdToDriverId and fill in xhk
+        for driverId,timeWorked in self.driverIdToTimeWorked.items():
+            x_timed[driverId] = timeWorked
+
+        strSolution += 'x_timed = [\n'
+        for value in x_timed:
+            strSolution += '\t[ '
+                strSolution += str(value) + ' '
+        strSolution += '];\n'
+
+        return strSolution
 
     def saveToFile(self, filePath):
         f = open(filePath, 'w')

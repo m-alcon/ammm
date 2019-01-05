@@ -28,43 +28,43 @@ class Solver_Greedy(Solver):
         # get an empty solution for the problem
         solution = Solution.createEmptySolution(config, problem)
 
-        # get tasks and sort them by their total required resources in descending order
-        tasks = problem.getTasks()
-        sortedTasks = sorted(tasks, key=lambda task: task.getTotalResources(), reverse=True)
+        # get services and sort them by their number of passengers in descending order
+        services = problem.getServices()
+        sortedServices = sorted(services, key=lambda service: service.getPassengers(), reverse=True)
 
         elapsedEvalTime = 0
         evaluatedCandidates = 0
 
-        # for each task taken in sorted order
-        for task in sortedTasks:
-            taskId = task.getId()
-            feasibleAssignments, task_elapsedEvalTime, task_evaluatedCandidates = solution.findFeasibleAssignments(taskId)
-            elapsedEvalTime += task_elapsedEvalTime
-            evaluatedCandidates += task_evaluatedCandidates
+        # for each service taken in sorted order
+        for service in sortedServices:
+            serviceId = service.getId()
+            feasibleAssignments, service_elapsedEvalTime, service_evaluatedCandidates = solution.findFeasibleAssignments(serviceId)
+            elapsedEvalTime += service_elapsedEvalTime
+            evaluatedCandidates += service_evaluatedCandidates
 
-            # choose assignment with minimum highest load
-            minHighestLoad = float('infinity')
+            # choose assignment with minimum cost
+            minCost = float('infinity')
             choosenAssignment = None
             for feasibleAssignment in feasibleAssignments:
-                if (feasibleAssignment.highestLoad < minHighestLoad):
-                    minHighestLoad = feasibleAssignment.highestLoad
+                if feasibleAssignment.totalCost < minCost:
+                    minCost = feasibleAssignment.totalCost
                     choosenAssignment = feasibleAssignment
 
-            if(choosenAssignment is None):
+            if choosenAssignment is None:
                 solution.makeInfeasible()
                 break
 
-            # assign the current task to the CPU that resulted in a minimum highest load
-            solution.assign(task.getId(), choosenAssignment.cpuId)
+            # assign the current service to the bus and the driver that resulted in a minimum cost
+            solution.assign(choosenAssignment.serviceId, choosenAssignment.busId, choosenAssignment.driverId)
 
-        return(solution, elapsedEvalTime, evaluatedCandidates)
+        return solution, elapsedEvalTime, evaluatedCandidates
 
     def solve(self, config, problem):
         self.startTimeMeasure()
         self.writeLogLine(float('infinity'), 0)
 
         solution, elapsedEvalTime, evaluatedCandidates = self.greedyConstruction(config, problem)
-        self.writeLogLine(solution.getHighestLoad(), 1)
+        self.writeLogLine(solution.calculateActualCost(), 1)
 
         localSearch = LocalSearch(config)
         solution = localSearch.run(solution)

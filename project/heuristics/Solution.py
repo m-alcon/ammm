@@ -23,11 +23,11 @@ from Problem import Problem
 # Assignment class stores the load of the highest loaded CPU
 # when a task is assigned to a CPU.
 class Assignment(object):
-    def __init__(self, serviceId, busId, driverId):
+    def __init__(self, serviceId, busId, driverId, totalCost):
         self.serviceId = serviceId
         self.busId = busId
         self.driverId = driverId
-        #self.totalCost = totalCost
+        self.totalCost = totalCost
         #self.busCapacity = busCapacity
 
 # Solution includes functions to manage the solution, to perform feasibility
@@ -92,7 +92,7 @@ class Solution(Problem):
         bus = self.buses[busId]
 
         # Constraint 1
-        passengers = service.getpassengers()
+        passengers = service.getPassengers()
         capacity = bus.getCapacity()
         if passengers > capacity:
             if self.verbose: print('Bus(%s) has not enough capacity for Service(%s)' % (str(busId), str(serviceId)))
@@ -255,7 +255,7 @@ class Solution(Problem):
                 evaluatedCandidates += 1
                 if not feasible: continue
 
-                assignment = Assignment(serviceId, busId, driverId)
+                assignment = Assignment(serviceId, busId, driverId, self.calculateActualCost())
                 feasibleAssignments.append(assignment)
 
                 self.unassign(serviceId, busId, driverId)
@@ -264,8 +264,7 @@ class Solution(Problem):
         return (feasibleAssignments, elapsedEvalTime, evaluatedCandidates)
 
     def findBestFeasibleAssignment(self, serviceId):
-        bestAssignment = Assignment(serviceId, None, None)
-        bestCost = float('infinity')
+        bestAssignment = Assignment(serviceId, None, None, float('infinity'))
         bestCapacity = float('infinity')
         for busId,bus in enumerate(self.buses):
             for driverId,driver in enumerate(self.drivers):
@@ -276,7 +275,7 @@ class Solution(Problem):
                 if (bestCost > actualCost) or (bestCost == actualCost and bus.getCapacity() < bestCapacity):
                     bestAssignment.busId = busId
                     bestAssignment.driverId = driverId
-                    bestCost = actualCost
+                    bestAssignment.totalCost = actualCost
                     bestCapacity = bus.getCapacity()
 
                 self.unassign(serviceId, busId, driverId)

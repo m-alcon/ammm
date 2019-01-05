@@ -1,6 +1,7 @@
 class Service(object):
 
-    def __init__(self, startingTime, durationTime, durationDist, passengers):
+    def __init__(self, selfId, startingTime, durationTime, durationDist, passengers):
+        self.id = selfId
         self.startingTime = startingTime
         self.durationTime = durationTime
         self.durationDist = durationDist
@@ -16,7 +17,7 @@ class Service(object):
 
         return True
 
-    def getpassengers(self):
+    def getPassengers(self):
         return self.passengers
 
     def getDurationTime(self):
@@ -24,3 +25,6 @@ class Service(object):
 
     def getStartingTime(self):
         return self.startingTime
+
+    def getId():
+        return self.id

@@ -4,10 +4,10 @@ fileNamePrefix = medium;
 fileNameExtension = dat;
 numInstances = 5;
 
-numServices = 40;
-numDrivers = 24;
-numBuses = 32;
-maxBuses = 20;
+numServices = 30;
+numDrivers = 18;
+numBuses = 24;
+maxBuses = 15;
 
 minStartTime = 0;
 maxStartTime = 1100;

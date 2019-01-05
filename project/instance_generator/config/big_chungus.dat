@@ -4,10 +4,10 @@ fileNamePrefix = chungus;
 fileNameExtension = dat;
 numInstances = 5;
 
-numServices = 160;
-numDrivers = 96;
-numBuses = 128;
-maxBuses = 80;
+numServices = 60;
+numDrivers = 36;
+numBuses = 48;
+maxBuses = 30;
 
 minStartTime = 0;
 maxStartTime = 1100;

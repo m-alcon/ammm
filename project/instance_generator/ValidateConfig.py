@@ -101,20 +101,20 @@ class ValidateConfig(object):
             raise Exception('maxCapacity(%s) has to be a positive integer value.' % str(maxCapacity))
 
         minCostTime = data.minCostTime
-        if(not isinstance(minCostTime, (int, long)) or (minCostTime <= 0)):
-            raise Exception('minCostTime(%s) has to be a positive integer value.' % str(minCostTime))
+        if(not isinstance(minCostTime, (float, long)) or (minCostTime <= 0)):
+            raise Exception('minCostTime(%s) has to be a positive float value.' % str(minCostTime))
 
         maxCostTime = data.maxCostTime
-        if(not isinstance(maxCostTime, (int, long)) or (maxCostTime <= 0)):
-            raise Exception('maxCostTime(%s) has to be a positive integer value.' % str(maxCostTime))
+        if(not isinstance(maxCostTime, (float, long)) or (maxCostTime <= 0)):
+            raise Exception('maxCostTime(%s) has to be a positive float value.' % str(maxCostTime))
 
         minCostDist = data.minCostDist
-        if(not isinstance(minCostDist, (int, long)) or (minCostDist <= 0)):
-            raise Exception('minCostDist(%s) has to be a positive integer value.' % str(minCostDist))
+        if(not isinstance(minCostDist, (float, long)) or (minCostDist <= 0)):
+            raise Exception('minCostDist(%s) has to be a positive float value.' % str(minCostDist))
 
         maxCostDist = data.maxCostDist
-        if(not isinstance(maxCostDist, (int, long)) or (maxCostDist <= 0)):
-            raise Exception('maxCostDist(%s) has to be a positive integer value.' % str(maxCostDist))
+        if(not isinstance(maxCostDist, (float, long)) or (maxCostDist <= 0)):
+            raise Exception('maxCostDist(%s) has to be a positive float value.' % str(maxCostDist))
 
         minMaxTime = data.minMaxTime
         if(not isinstance(minMaxTime, (int, long)) or (minMaxTime <= 0)):
@@ -125,20 +125,20 @@ class ValidateConfig(object):
             raise Exception('maxMaxTime(%s) has to be a positive integer value.' % str(maxMaxTime))
 
         minCostBM = data.minCostBM
-        if(not isinstance(minCostBM, (int, long)) or (minCostBM <= 0)):
-            raise Exception('minCostBM(%s) has to be a positive integer value.' % str(minCostBM))
+        if(not isinstance(minCostBM, (float, long)) or (minCostBM <= 0)):
+            raise Exception('minCostBM(%s) has to be a positive float value.' % str(minCostBM))
 
         maxCostBM = data.maxCostBM
-        if(not isinstance(maxCostBM, (int, long)) or (maxCostBM <= 0)):
-            raise Exception('maxCostBM(%s) has to be a positive integer value.' % str(maxCostBM))
+        if(not isinstance(maxCostBM, (float, long)) or (maxCostBM <= 0)):
+            raise Exception('maxCostBM(%s) has to be a positive float value.' % str(maxCostBM))
 
         minCostEM = data.minCostEM
-        if(not isinstance(minCostEM, (int, long)) or (minCostEM <= 0)):
-            raise Exception('minCostEM(%s) has to be a positive integer value.' % str(minCostEM))
+        if(not isinstance(minCostEM, (float, long)) or (minCostEM <= 0)):
+            raise Exception('minCostEM(%s) has to be a positive float value.' % str(minCostEM))
 
         maxCostEM = data.maxCostEM
-        if(not isinstance(maxCostEM, (int, long)) or (maxCostEM <= 0)):
-            raise Exception('maxCostEM(%s) has to be a positive integer value.' % str(maxCostEM))
+        if(not isinstance(maxCostEM, (float, long)) or (maxCostEM <= 0)):
+            raise Exception('maxCostEM(%s) has to be a positive float value.' % str(maxCostEM))
 
         minBM = data.minBM
         if(not isinstance(minBM, (int, long)) or (minBM <= 0)):

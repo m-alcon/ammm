@@ -1,35 +1,35 @@
-# file name: instances/instance_XX.dat
+# file name: ../opl/instances/huge_XX.dat
 instancesDirectory = ../opl/instances;
 fileNamePrefix = huge;
 fileNameExtension = dat;
 numInstances = 5;
 
 numServices = 120;
-numDrivers = 90;
-numBuses = 120;
-maxBuses = 90;
+numDrivers = 64;
+numBuses = 96;
+maxBuses = 60;
 
 minStartTime = 0;
-maxStartTime = 350;
-minDurationTime = 20;
-maxDurationTime = 60;
-minDurationDistance = 2;
-maxDurationDistance = 20;
+maxStartTime = 1100;
+minDurationTime = 40;
+maxDurationTime = 120;
+minDurationDistance = 10;
+maxDurationDistance = 50;
 minpassengers = 2;
 maxpassengers = 50;
 
 minCapacity = 10;
-maxCapacity = 60;
-minCostTime = 1;
-maxCostTime = 2;
-minCostDist = 2;
-maxCostDist = 5;
+maxCapacity = 80;
+minCostTime = 0.05;
+maxCostTime = 0.2;
+minCostDist = 0.1;
+maxCostDist = 0.3;
 
-minMaxTime = 40;
-maxMaxTime = 80;
-minCostBM = 5;
-maxCostBM = 8;
-minCostEM = 8;
-maxCostEM = 12;
-minBM = 20;
-maxBM = 40;
+minMaxTime = 240;
+maxMaxTime = 300;
+minCostBM = 0.1;
+maxCostBM = 0.2;
+minCostEM = 0.25;
+maxCostEM = 0.3;
+minBM = 140;
+maxBM = 240;

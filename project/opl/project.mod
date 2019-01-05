@@ -51,6 +51,7 @@ subject to{
 	
 	// Constraint 2.b
 	forall(s1 in S, b in B) {
+		x_b[s1,b]+ 
 		sum(s2 in S: s2 > s1 && (
 			// starting time s2 between duration s1
 			(startingTime[s1] <= startingTime[s2] && finalTime[s1] >= startingTime[s2]) ||
@@ -58,11 +59,12 @@ subject to{
 			(startingTime[s1] <= finalTime[s2] && finalTime[s1] >= finalTime[s2]) ||
 			// duration s1 inside duration s2
 			(startingTime[s1] >= startingTime[s2] && finalTime[s1] <= finalTime[s2])
-		)) x_b[s2][b] <= 1;
- 	}			
+		)) x_b[s2,b] <= 1;
+ 	}
 		
 	// Constraint 2.d
 	forall(s1 in S, d in D) {
+	    x_d[s1,d]+ 
 	    sum(s2 in S: s2 > s1 && (
 	          // starting time s2 between duration s1
 	          (startingTime[s1] <= startingTime[s2] && finalTime[s1] >= startingTime[s2]) ||
@@ -70,7 +72,7 @@ subject to{
 	          (startingTime[s1] <= finalTime[s2] && finalTime[s1] >= finalTime[s2]) ||
 	          // duration s1 inside duration s2
 	          (startingTime[s1] >= startingTime[s2] && finalTime[s1] <= finalTime[s2])
-	     )) x_d[s2][d] <= 1;
+	     )) x_d[s2,d] <= 1;
 	}
 	// Constraint 3
 	

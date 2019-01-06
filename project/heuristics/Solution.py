@@ -188,6 +188,8 @@ class Solution(Problem):
         else:
             self.driverIdToTimeWorked[driverId] += self.services[serviceId].getDurationTime()
 
+        self.cost = self.calculateActualCost()
+
         if self.verbose: print('Assign Service(%s) to Bus(%s) and Driver(%s)' % (str(serviceId), str(busId), str(driverId)))
         return True
 

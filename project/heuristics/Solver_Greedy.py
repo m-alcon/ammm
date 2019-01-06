@@ -83,4 +83,4 @@ class Solver_Greedy(Solver):
 
         localSearch.printPerformance()
 
-        return(solution)
+        return solution

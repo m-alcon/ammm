@@ -43,7 +43,6 @@ class DATParser(object):
         # try parsing x as bool
         if(x in ['True',  'true',  'TRUE', 'T', 't']): return(True)
         if(x in ['False', 'false', 'FALSE', 'F', 'f']): return(False)
-
         # x cannot be parsed, leave it as is
         return(x)
 
@@ -76,7 +75,7 @@ class DATParser(object):
         for entry in entries:
             pattern2 = re.compile(r'([\w\/\.]+)[\s]*')
             values = pattern2.findall(entry[1])
-            datAttr.__dict__[entry[0]] = map(DATParser._tryParse, values)
+            datAttr.__dict__[entry[0]] = list(map(DATParser._tryParse, values))
 
         # parse 2-dimension vector attributes
         pattern = re.compile(r'^[\s]*([a-zA-Z][\w]*)[\s]*\=[\s]*\[(([\s]*\[[\s]*(([\w\/\.\-]+[\s]*)+)\][\s]*)+)[\s]*\][\s]*\;', re.M)
@@ -88,7 +87,7 @@ class DATParser(object):
             for entry2 in entries2:
                 pattern2 = re.compile(r'([\w\/\.\-]+)[\s]*')
                 values2 = pattern2.findall(entry2[0])
-                values.append(map(DATParser._tryParse, values2))
+                values.append(list(map(DATParser._tryParse, values2)))
             datAttr.__dict__[entry[0]] = values
 
         return(datAttr)

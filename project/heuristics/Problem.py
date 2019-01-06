@@ -36,7 +36,7 @@ class Problem(object):
         capacity = self.inputData.capacity
         costTime = self.inputData.costTime
         costDist = self.inputData.costDist
-        maxTime = self.inputData.maxTimes
+        maxTime = self.inputData.maxTime
         costBM = self.inputData.costBM
         costEM = self.inputData.costEM
         bm = self.inputData.BM
@@ -49,11 +49,11 @@ class Problem(object):
         self.buses = []
         Bus.maxBuses = maxBuses
         for i in range(nBuses):
-            self.buses.append(Bus(capacity[i],costTime[i],costDist[i]))
+            self.buses.append(Bus(i,capacity[i],costTime[i],costDist[i]))
 
         self.drivers = []
         for i in range(nDrivers):
-            self.drivers.append(Driver(maxTime[i],costBM[i],costEM[i],bm[i]))
+            self.drivers.append(Driver(i,maxTime[i],costBM[i],costEM[i],bm[i]))
 
     def getServices(self):
         return(self.services)

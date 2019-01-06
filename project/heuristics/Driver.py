@@ -10,14 +10,14 @@ class Driver(object):
     def getMaxTime(self):
         return self.maxTime
 
-    def getCostBM():
+    def getCostBM(self):
         return self.costBM
 
-    def getCostEM():
+    def getCostEM(self):
         return self.costEM
 
-    def getBM():
+    def getBM(self):
         return self.bm
 
-    def getId():
+    def getId(self):
         return self.id

@@ -25,24 +25,24 @@ class ValidateConfig(object):
     def validate(data):
         # Validate that mandatory input parameters were found
         for paramName in ['inputDataFile', 'solutionFile', 'solver']:
-            if(not data.__dict__.has_key(paramName)):
+            if not paramName in data.__dict__:
                 raise Exception('Parameter/Set(%s) not contained in Configuration' % str(paramName))
 
         # Validate input data file
         inputDataFile = data.inputDataFile
-        if(len(inputDataFile) == 0):
+        if not inputDataFile:
             raise Exception('Value for inputDataFile is empty')
         if(not os.path.exists(inputDataFile)):
             raise Exception('inputDataFile(%s) does not exist' % inputDataFile)
 
         # Validate solution file
         solutionFile = data.solutionFile
-        if(len(solutionFile) == 0):
+        if not solutionFile:
             raise Exception('Value for solutionFile is empty')
 
         # Validate verbose
         verbose = False
-        if(data.__dict__.has_key('verbose')):
+        if 'verbose' in data.__dict__:
             verbose = data.verbose
             if(not isinstance(verbose, (bool)) or (verbose not in [True, False])):
                 raise Exception('verbose(%s) has to be a boolean value.' % str(verbose))
@@ -54,7 +54,7 @@ class ValidateConfig(object):
         if(solver == 'Greedy'):
             # Validate that mandatory input parameters for Greedy solver were found
             for paramName in ['localSearch']:
-                if(not data.__dict__.has_key(paramName)):
+                if not paramName in data.__dict__:
                     raise Exception('Parameter/Set(%s) not contained in Configuration. Required by Greedy solver.' % str(paramName))
 
             # Validate localSearch
@@ -65,7 +65,7 @@ class ValidateConfig(object):
         elif(solver == 'GRASP'):
             # Validate that mandatory input parameters for GRASP solver were found
             for paramName in ['maxExecTime', 'alpha', 'localSearch']:
-                if(not data.__dict__.has_key(paramName)):
+                if not paramName in data.__dict__:
                     raise Exception('Parameter/Set(%s) not contained in Configuration. Required by GRASP solver.' % str(paramName))
 
             # Validate maxExecTime
@@ -89,7 +89,7 @@ class ValidateConfig(object):
         if(data.localSearch):
             # Validate that mandatory input parameters for local search were found
             for paramName in ['neighborhoodStrategy', 'policy']:
-                if(not data.__dict__.has_key(paramName)):
+                if not paramName in data.__dict__:
                     raise Exception('Parameter/Set(%s) not contained in Configuration. Required by Local Search.' % str(paramName))
 
             # Validate neighborhoodStrategy

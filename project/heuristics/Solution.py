@@ -101,10 +101,11 @@ class Solution(Problem):
         #Constraint 2.b
         start = service.getStartingTime()
         end = start + service.getDurationTime()
-        for sId in self.busIdToServicesId[busId]:
-            if self.services[sId].itOverlapsInTime(start, end):
-                if self.verbose: print('Bus(%s) serves other Service(%s) that overlaps with Service(%s)' % (str(busId), str(sId), str(serviceId)))
-                return False
+        if busId in self.busIdToServicesId:
+            for sId in self.busIdToServicesId[busId]:
+                if self.services[sId].itOverlapsInTime(start, end):
+                    if self.verbose: print('Bus(%s) serves other Service(%s) that overlaps with Service(%s)' % (str(busId), str(sId), str(serviceId)))
+                    return False
 
         # Constraint 4
         maxBuses = bus.getMaxBuses()
@@ -126,10 +127,11 @@ class Solution(Problem):
         #Constraint 2.d
         start = service.getStartingTime()
         end = start + service.getDurationTime()
-        for sId in self.driverIdToServicesId[driverId]:
-            if self.services[sId].itOverlapsInTime(start, end):
-                if self.verbose: print('Driver(%s) serves other Service(%s) that overlaps with Service(%s)' % (str(busId), str(sId), str(serviceId)))
-                return False
+        if driverId in self.driverIdToServicesId:
+            for sId in self.driverIdToServicesId[driverId]:
+                if self.services[sId].itOverlapsInTime(start, end):
+                    if self.verbose: print('Driver(%s) serves other Service(%s) that overlaps with Service(%s)' % (str(busId), str(sId), str(serviceId)))
+                    return False
 
         # Constraint 3
         serviceTime = service.getDurationTime()
@@ -333,8 +335,7 @@ class Solution(Problem):
 
         strSolution += 'x_usedb = [\n'
         for value in x_usedb:
-            strSolution += '\t[ '
-                strSolution += str(value) + ' '
+            strSolution += str(value) + ' '
         strSolution += '];\n'
 
         # x_timed: decision variable containing the used buses
@@ -347,8 +348,7 @@ class Solution(Problem):
 
         strSolution += 'x_timed = [\n'
         for value in x_timed:
-            strSolution += '\t[ '
-                strSolution += str(value) + ' '
+            strSolution += str(value) + ' '
         strSolution += '];\n'
 
         return strSolution

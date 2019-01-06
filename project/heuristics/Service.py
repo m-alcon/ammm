@@ -10,9 +10,7 @@ class Service(object):
     def itOverlapsInTime(self, startingTime2, finalTime2):
         startingTime1 = self.startingTime
         finalTime1 = startingTime1 + self.durationTime
-        if  (startingTime1 <= startingTime2 and finalTime1 >= startingTime2) or
-            (startingTime1 <= finalTime2 and finalTime1 >= finalTime2) or
-            (startingTime1 >= startingTime2 and finalTime1 <= finalTime2):
+        if  (startingTime1 <= startingTime2 and finalTime1 >= startingTime2) or (startingTime1 <= finalTime2 and finalTime1 >= finalTime2) or (startingTime1 >= startingTime2 and finalTime1 <= finalTime2):
             return False
 
         return True
@@ -26,5 +24,5 @@ class Service(object):
     def getStartingTime(self):
         return self.startingTime
 
-    def getId():
+    def getId(self):
         return self.id

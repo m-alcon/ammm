@@ -27,28 +27,28 @@ class ValidateInputData(object):
         # Validate that all input parameters were found
         for paramName in ['nServices', 'nBuses', 'nDrivers', 'maxBuses', 'startingTime',
                     'durationTime', 'durationDist', 'passengers', 'capacity', 'costTime',
-                    'costDist', 'maxTime', 'costBM', 'costEM', 'bm']:
-            if(not data.__dict__.has_key(paramName)):
+                    'costDist', 'maxTime', 'costBM', 'costEM', 'BM']:
+            if not paramName in data.__dict__:
                 raise Exception('Parameter/Set(%s) not contained in Input Data' % str(paramName))
 
         # Validate nServices
         nServices = data.nServices
-        if(not isinstance(nServices, (int, long)) or (nServices <= 0)):
+        if(not isinstance(nServices, (int)) or (nServices <= 0)):
             raise Exception('nTasks(%s) has to be a positive integer value.' % str(nTasks))
 
         # Validate nBuses
         nBuses = data.nBuses
-        if(not isinstance(nBuses, (int, long)) or (nBuses <= 0)):
+        if(not isinstance(nBuses, (int)) or (nBuses <= 0)):
             raise Exception('nTasks(%s) has to be a positive integer value.' % str(nTasks))
 
         # Validate nDrivers
         nDrivers = data.nDrivers
-        if(not isinstance(nDrivers, (int, long)) or (nDrivers <= 0)):
+        if(not isinstance(nDrivers, (int)) or (nDrivers <= 0)):
             raise Exception('nTasks(%s) has to be a positive integer value.' % str(nTasks))
 
         # Validate maxBuses
         maxBuses = data.maxBuses
-        if(not isinstance(maxBuses, (int, long)) or (maxBuses <= 0)):
+        if(not isinstance(maxBuses, (int)) or (maxBuses <= 0)):
             raise Exception('nTasks(%s) has to be a positive integer value.' % str(nTasks))
 
         # Validate startingTime
@@ -57,7 +57,7 @@ class ValidateInputData(object):
             raise Exception('Size of startingTime(%d) does not match with value of nThreads(%d).' % (len(startingTime), nServices))
 
         for value in startingTime:
-            if(not isinstance(value, (int, long, float)) or (value < 0)):
+            if(not isinstance(value, (int, float)) or (value < 0)):
                 raise Exception('Invalid parameter value(%s) in startingTime. Should be a float greater or equal than zero.' % str(value))
 
         # Validate durationTime
@@ -66,7 +66,7 @@ class ValidateInputData(object):
             raise Exception('Size of durationTime(%d) does not match with value of nThreads(%d).' % (len(durationTime), nServices))
 
         for value in durationTime:
-            if(not isinstance(value, (int, long, float)) or (value < 0)):
+            if(not isinstance(value, (int, float)) or (value < 0)):
                 raise Exception('Invalid parameter value(%s) in durationTime. Should be a float greater or equal than zero.' % str(value))
 
         # Validate durationDist
@@ -75,7 +75,7 @@ class ValidateInputData(object):
             raise Exception('Size of durationDist(%d) does not match with value of nThreads(%d).' % (len(durationDist), nServices))
 
         for value in durationDist:
-            if(not isinstance(value, (int, long, float)) or (value < 0)):
+            if(not isinstance(value, (int, float)) or (value < 0)):
                 raise Exception('Invalid parameter value(%s) in durationDist. Should be a float greater or equal than zero.' % str(value))
 
         # Validate passengers
@@ -84,7 +84,7 @@ class ValidateInputData(object):
             raise Exception('Size of passengers(%d) does not match with value of nServices(%d).' % (len(passengers), nServices))
 
         for value in passengers:
-            if(not isinstance(value, (int, long, float)) or (value < 0)):
+            if(not isinstance(value, (int, float)) or (value < 0)):
                 raise Exception('Invalid parameter value(%s) in passengers. Should be a float greater or equal than zero.' % str(value))
 
         # Validate capacity
@@ -98,7 +98,7 @@ class ValidateInputData(object):
             raise Exception('Size of costTime(%d) does not match with value of nBuses(%d).' % (len(costTime), nBuses))
 
         for value in costTime:
-            if(not isinstance(value, (int, long, float)) or (value < 0)):
+            if(not isinstance(value, (int, float)) or (value < 0)):
                 raise Exception('Invalid parameter value(%s) in costTime. Should be a float greater or equal than zero.' % str(value))
 
         # Validate costDist
@@ -107,7 +107,7 @@ class ValidateInputData(object):
             raise Exception('Size of costDist(%d) does not match with value of nBuses(%d).' % (len(costDist), nBuses))
 
         for value in costDist:
-            if(not isinstance(value, (int, long, float)) or (value < 0)):
+            if(not isinstance(value, (int, float)) or (value < 0)):
                 raise Exception('Invalid parameter value(%s) in costDist. Should be a float greater or equal than zero.' % str(value))
 
         # Validate maxTime
@@ -116,7 +116,7 @@ class ValidateInputData(object):
             raise Exception('Size of maxTime(%d) does not match with value of nDrivers(%d).' % (len(maxTime), nDrivers))
 
         for value in maxTime:
-            if(not isinstance(value, (int, long, float)) or (value < 0)):
+            if(not isinstance(value, (int, float)) or (value < 0)):
                 raise Exception('Invalid parameter value(%s) in maxTime. Should be a float greater or equal than zero.' % str(value))
 
         # Validate costBM
@@ -125,7 +125,7 @@ class ValidateInputData(object):
             raise Exception('Size of costBM(%d) does not match with value of nDrivers(%d).' % (len(costBM), nDrivers))
 
         for value in costBM:
-            if(not isinstance(value, (int, long, float)) or (value < 0)):
+            if(not isinstance(value, (int, float)) or (value < 0)):
                 raise Exception('Invalid parameter value(%s) in costBM. Should be a float greater or equal than zero.' % str(value))
 
         # Validate costEM
@@ -134,7 +134,7 @@ class ValidateInputData(object):
             raise Exception('Size of costEM(%d) does not match with value of nDrivers(%d).' % (len(costEM), nDrivers))
 
         for value in costEM:
-            if(not isinstance(value, (int, long, float)) or (value < 0)):
+            if(not isinstance(value, (int, float)) or (value < 0)):
                 raise Exception('Invalid parameter value(%s) in costEM. Should be a float greater or equal than zero.' % str(value))
 
         # Validate maxTime
@@ -143,5 +143,5 @@ class ValidateInputData(object):
             raise Exception('Size of BM(%d) does not match with value of nDrivers(%d).' % (len(BM), nDrivers))
 
         for value in BM:
-            if(not isinstance(value, (int, long, float)) or (value < 0)):
+            if(not isinstance(value, (int, float)) or (value < 0)):
                 raise Exception('Invalid parameter value(%s) in BM. Should be a float greater or equal than zero.' % str(value))

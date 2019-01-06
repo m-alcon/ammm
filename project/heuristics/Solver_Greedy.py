@@ -69,17 +69,17 @@ class Solver_Greedy(Solver):
         localSearch = LocalSearch(config)
         solution = localSearch.run(solution)
 
-        self.writeLogLine(solution.getHighestLoad(), 1)
+        self.writeLogLine(solution.calculateActualCost(), 1)
 
         avg_evalTimePerCandidate = 0.0
         if (evaluatedCandidates != 0):
             avg_evalTimePerCandidate = 1000.0 * elapsedEvalTime / float(evaluatedCandidates)
 
-        print ''
-        print 'Greedy Candidate Evaluation Performance:'
-        print '  Num. Candidates Eval.', evaluatedCandidates
-        print '  Total Eval. Time     ', elapsedEvalTime, 's'
-        print '  Avg. Time / Candidate', avg_evalTimePerCandidate, 'ms'
+        print('')
+        print('Greedy Candidate Evaluation Performance:')
+        print('  Num. Candidates Eval.', evaluatedCandidates)
+        print('  Total Eval. Time     ', elapsedEvalTime, 's')
+        print('  Avg. Time / Candidate', avg_evalTimePerCandidate, 'ms')
 
         localSearch.printPerformance()
 

@@ -24,7 +24,7 @@ from DATParser import DATParser
 from ValidateInputData import ValidateInputData
 from ValidateConfig import ValidateConfig
 from Solver_Greedy import Solver_Greedy
-from Solver_GRASP import Solver_GRASP
+#from Solver_GRASP import Solver_GRASP
 from Problem import Problem
 from Solution import Solution
 
@@ -34,43 +34,43 @@ def run():
         argp.add_argument('configFile', help='configuration file path')
         args = argp.parse_args()
 
-        print 'AMMM Lab Heuristics'
-        print '-------------------'
+        print( 'AMMM Lab Heuristics')
+        print( '-------------------')
 
-        print 'Reading Config file %s...' % args.configFile
+        print( 'Reading Config file %s...' % args.configFile)
         config = DATParser.parse(args.configFile)
         ValidateConfig.validate(config)
 
-        print 'Reading Input Data file %s...' % config.inputDataFile
+        print( 'Reading Input Data file %s...' % config.inputDataFile)
         inputData = DATParser.parse(config.inputDataFile)
         ValidateInputData.validate(inputData)
 
-        print 'Creating Problem...'
+        print( 'Creating Problem...')
         problem = Problem(inputData)
 
-        if(problem.checkInstance()):
-            print 'Solving Problem...'
+        if problem.checkInstance():
+            print( 'Solving Problem...')
             solver = None
             solution = None
             if(config.solver == 'Greedy'):
                 solver = Solver_Greedy()
                 solution = solver.solve(config, problem)
-            elif(config.solver == 'GRASP'):
-                solver = Solver_GRASP()
-                solution = solver.solve(config, problem)
+            #elif config.solver == 'GRASP':
+            #    solver = Solver_GRASP()
+            #    solution = solver.solve(config, problem)
 
             solution.saveToFile(config.solutionFile)
         else:
-            print 'Instance is infeasible.'
+            print( 'Instance is infeasible.')
             solution = Solution.createEmptySolution(config, problem)
             solution.makeInfeasible()
             solution.saveToFile(config.solutionFile)
 
         return(0)
     except Exception as e:
-        print
-        print 'Exception:', e
-        print
+        print()
+        print( 'Exception:', e)
+        print()
         return(1)
 
 if __name__ == '__main__':

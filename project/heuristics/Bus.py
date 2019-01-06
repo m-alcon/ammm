@@ -20,5 +20,5 @@ class Bus(object):
     def getCostDistance(self):
         return self.costDistance
 
-    def getId():
+    def getId(self):
         return self.id

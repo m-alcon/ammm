@@ -75,8 +75,7 @@ class LocalSearch(object):
             newDriverIdToTimeWorked[newDriverId] += service.getDurationTime()
 
             # Some constraint comprovation (easiest ones)
-            if  solution.buses[newBusId].getCapacity() < service.getPassengers() or
-                solution.drivers[newDriverId].getMaxTime() < newDriverIdToTimeWorked[newDriverId]:
+            if  solution.buses[newBusId].getCapacity() < service.getPassengers() or solution.drivers[newDriverId].getMaxTime() < newDriverIdToTimeWorked[newDriverId]:
                 return float('infinity')
 
         busCost = 0
@@ -137,7 +136,7 @@ class LocalSearch(object):
                 curBusId = bus.getId()
                 curDriverId = driver.getId()
 
-                for bus in solution.buses
+                for bus in solution.buses:
                     newBusId = bus.getId()
 
                     for driver in solution.drivers:
@@ -243,8 +242,8 @@ class LocalSearch(object):
         if self.iterations != 0:
             avg_evalTimePerIteration = 1000.0 * self.elapsedTime / float(self.iterations)
 
-        print ''
-        print 'Local Search Performance:'
-        print '  Num. Iterations Eval.', self.iterations
-        print '  Total Eval. Time     ', self.elapsedTime, 's'
-        print '  Avg. Time / Iteration', avg_evalTimePerIteration, 'ms'
+        print('')
+        print('Local Search Performance:')
+        print('  Num. Iterations Eval.', self.iterations)
+        print('  Total Eval. Time     ', self.elapsedTime, 's')
+        print('  Avg. Time / Iteration', avg_evalTimePerIteration, 'ms')

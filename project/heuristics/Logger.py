@@ -44,18 +44,18 @@ class Logger(object):
     def printValues(self, fieldValues):
         if(type(fieldValues) != dict):
             raise Exception('[Logger.printValues] Attribute "fieldValues" must be a dictionary indexed by field id and the field value as value')
-        
+
         values = []
         for field in self._fields:
             fieldId = field['id']
             fieldFormat = field['format']
-            if(not fieldValues.has_key(fieldId)):
+            if not fieldId in fieldValues:
                 raise Exception('[Logger.printValues] No value has not been provided for field "%s"' % fieldId)
-            
+
             value = fieldValues[fieldId]
             value = fieldFormat.format(value)
             values.append(value)
-        
+
         print('   '.join(values))
         sys.stdout.flush()
 

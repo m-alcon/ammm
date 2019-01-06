@@ -18,4 +18,4 @@
 #You should have received a copy of the GNU General Public License
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-python3 Main.py config/b1greedy_Local_N1_BI.dat
+python3 Main.py config/debug.dat

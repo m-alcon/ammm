@@ -105,13 +105,15 @@ class Solution(Problem):
             for sId in self.busIdToServicesId[busId]:
                 if self.services[sId].itOverlapsInTime(start, end):
                     if self.verbose: print('Bus(%s) serves other Service(%s) that overlaps with Service(%s)' % (str(busId), str(sId), str(serviceId)))
+                    #if self.verbose: print('start: (%s) end(%s)' % (str(start), str(end)))
+                    #if self.verbose: print('id1(%s) start1(%s) duration1(%s), id2(%s) start2(%s) duration2(%s)' % (str(sId), str(self.services[sId].getStartingTime()), str(self.services[sId].getDurationTime()), str(serviceId), str(self.services[serviceId].getStartingTime()),  str(self.services[serviceId].getDurationTime())))
                     return False
 
         # Constraint 4
         maxBuses = bus.getMaxBuses()
-        usedBuses = len(self.serviceIdToBusId)
+        usedBuses = len(self.busIdToServicesId)
         if usedBuses > maxBuses:
-            if self.verbose: print('maxBuses(%s) overpassed by usedBuses(%s)' % (str(maxBuses), str(busesWorking)))
+            if self.verbose: print('maxBuses(%s) overpassed by usedBuses(%s)' % (str(maxBuses), str(usedBuses)))
             return False
 
         return True
@@ -130,7 +132,7 @@ class Solution(Problem):
         if driverId in self.driverIdToServicesId:
             for sId in self.driverIdToServicesId[driverId]:
                 if self.services[sId].itOverlapsInTime(start, end):
-                    if self.verbose: print('Driver(%s) serves other Service(%s) that overlaps with Service(%s)' % (str(busId), str(sId), str(serviceId)))
+                    if self.verbose: print('Driver(%s) serves other Service(%s) that overlaps with Service(%s)' % (str(driverId), str(sId), str(serviceId)))
                     return False
 
         # Constraint 3
@@ -271,8 +273,10 @@ class Solution(Problem):
     def findBestFeasibleAssignment(self, serviceId):
         bestAssignment = Assignment(serviceId, None, None, float('infinity'))
         bestCapacity = float('infinity')
-        for busId,bus in enumerate(self.buses):
-            for driverId,driver in enumerate(self.drivers):
+        for bus in self.buses:
+            busId = bus.getId()
+            for driver in self.drivers:
+                driverId = driver.getId()
                 feasible = self.assign(serviceId, busId, driverId)
                 if not feasible: continue
 
@@ -292,7 +296,8 @@ class Solution(Problem):
         nBuses = self.inputData.nBuses
         nDrivers = self.inputData.nDrivers
 
-        strSolution = 'cost = %10.8f;\n' % self.calculateActualCost()
+        strSolution = 'isFeasible = ' + str(self.feasible) + ';\n'
+        strSolution += 'cost = %10.8f;\n' % self.calculateActualCost()
 
         # x_b: decision variable containing the assignment of buses to services
         # pre-fill with no assignments (all-zeros)

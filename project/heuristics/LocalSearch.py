@@ -83,7 +83,7 @@ class LocalSearch(object):
             service = solution.services[serviceId]
             bus = solution.buses[busId]
             busCost += service.getDurationTime()*bus.getCostTime()
-            busCost += service.getDurationDist()*bus.getCostDist()
+            busCost += service.getDurationDist()*bus.getCostDistance()
 
         driverCost = 0
         for driverId,timeWorked in newDriverIdToTimeWorked.items():

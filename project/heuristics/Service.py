@@ -21,6 +21,9 @@ class Service(object):
     def getDurationTime(self):
         return self.durationTime
 
+    def getDurationDist(self):
+        return self.durationDist
+
     def getStartingTime(self):
         return self.startingTime
 

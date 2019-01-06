@@ -34,7 +34,6 @@ class Solver_Greedy(Solver):
 
         elapsedEvalTime = 0
         evaluatedCandidates = 0
-
         # for each service taken in sorted order
         for service in sortedServices:
             serviceId = service.getId()

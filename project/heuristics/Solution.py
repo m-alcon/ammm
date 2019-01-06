@@ -70,7 +70,7 @@ class Solution(Problem):
             service = self.services[serviceId]
             bus = self.buses[busId]
             busCost += service.getDurationTime()*bus.getCostTime()
-            busCost += service.getDurationDist()*bus.getCostDist()
+            busCost += service.getDurationDist()*bus.getCostDistance()
 
         driverCost = 0
         for driverId,timeWorked in self.driverIdToTimeWorked.items():
@@ -110,7 +110,7 @@ class Solution(Problem):
         # Constraint 4
         maxBuses = bus.getMaxBuses()
         usedBuses = len(self.serviceIdToBusId)
-        if maxBuses >= usedBuses:
+        if usedBuses > maxBuses:
             if self.verbose: print('maxBuses(%s) overpassed by usedBuses(%s)' % (str(maxBuses), str(busesWorking)))
             return False
 
@@ -186,9 +186,9 @@ class Solution(Problem):
         else:
             self.driverIdToServicesId[driverId] = [serviceId]
         if driverId in self.driverIdToTimeWorked:
-            self.driverIdToTimeWorked[driverId] = self.services[serviceId].getDurationTime()
-        else:
             self.driverIdToTimeWorked[driverId] += self.services[serviceId].getDurationTime()
+        else:
+            self.driverIdToTimeWorked[driverId] = self.services[serviceId].getDurationTime()
 
         self.cost = self.calculateActualCost()
 
@@ -241,7 +241,7 @@ class Solution(Problem):
         if not self.driverIdToServicesId[driverId]:   #Empty list
             self.driverIdToServicesId.pop(driverId)
         self.driverIdToTimeWorked[driverId] -= self.services[serviceId].getDurationTime()
-        if self.driverIdToServicesId[driverId] == 0:
+        if self.driverIdToTimeWorked[driverId] == 0:
             self.driverIdToTimeWorked.pop(driverId)
 
         if self.verbose: print('Unassign Service(%s) to Bus(%s) and Driver(%s)' % (str(serviceId), str(busId), str(driverId)))
@@ -252,10 +252,11 @@ class Solution(Problem):
         evaluatedCandidates = 0
 
         feasibleAssignments = []
-        for busId,bus in enumerate(self.buses):
-            for driverId,driver in enumerate(self.drivers):
+        for bus in self.buses:
+            busId = bus.getId()
+            for driver in self.drivers:
+                driverId = driver.getId()
                 feasible = self.assign(serviceId, busId, driverId)
-
                 evaluatedCandidates += 1
                 if not feasible: continue
 

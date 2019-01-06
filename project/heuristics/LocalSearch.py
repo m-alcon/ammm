@@ -72,7 +72,10 @@ class LocalSearch(object):
 
             newServiceIdToBusId[serviceId] = newBusId
             newDriverIdToTimeWorked[curDriverId] -= service.getDurationTime()
-            newDriverIdToTimeWorked[newDriverId] += service.getDurationTime()
+            if newDriverId in newDriverIdToTimeWorked:
+                newDriverIdToTimeWorked[newDriverId] += service.getDurationTime()
+            else:
+                newDriverIdToTimeWorked[newDriverId] = service.getDurationTime()
 
             # Some constraint comprovation (easiest ones)
             if  solution.buses[newBusId].getCapacity() < service.getPassengers() or solution.drivers[newDriverId].getMaxTime() < newDriverIdToTimeWorked[newDriverId]:
@@ -119,7 +122,7 @@ class LocalSearch(object):
         return sorted_assignments
 
     def exploreNeighborhood(self, solution):
-        services = solution.services()
+        services = solution.services
 
         actualCost = solution.calculateActualCost()
         bestNeighbor = solution

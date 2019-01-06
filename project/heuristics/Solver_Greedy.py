@@ -50,6 +50,10 @@ class Solver_Greedy(Solver):
                     choosenAssignment = feasibleAssignment
 
             if choosenAssignment is None:
+                print('sortedServices: [ ', end='')
+                for s in sortedServices:
+                    print(s.getId(), end=' ')
+                print(']\nserviceId:',serviceId)
                 solution.makeInfeasible()
                 break
 

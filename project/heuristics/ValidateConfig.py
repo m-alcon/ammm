@@ -70,12 +70,12 @@ class ValidateConfig(object):
 
             # Validate maxExecTime
             maxExecTime = data.maxExecTime
-            if(not isinstance(maxExecTime, (int, long, float)) or (maxExecTime <= 0)):
+            if(not isinstance(maxExecTime, (int, float)) or (maxExecTime <= 0)):
                 raise Exception('maxExecTime(%s) has to be a positive float value.' % str(maxExecTime))
 
             # Validate alpha
             alpha = data.alpha
-            if(not isinstance(alpha, (int, long, float)) or (alpha < 0) or (alpha > 1)):
+            if(not isinstance(alpha, (int, float)) or (alpha < 0) or (alpha > 1)):
                 raise Exception('alpha(%s) has to be a float value in range [0, 1].' % str(alpha))
 
             # Validate localSearch

@@ -24,7 +24,7 @@ from DATParser import DATParser
 from ValidateInputData import ValidateInputData
 from ValidateConfig import ValidateConfig
 from Solver_Greedy import Solver_Greedy
-#from Solver_GRASP import Solver_GRASP
+from Solver_GRASP import Solver_GRASP
 from Problem import Problem
 from Solution import Solution
 
@@ -55,9 +55,9 @@ def run():
             if(config.solver == 'Greedy'):
                 solver = Solver_Greedy()
                 solution = solver.solve(config, problem)
-            #elif config.solver == 'GRASP':
-            #    solver = Solver_GRASP()
-            #    solution = solver.solve(config, problem)
+            elif config.solver == 'GRASP':
+                solver = Solver_GRASP()
+                solution = solver.solve(config, problem)
 
             solution.saveToFile(config.solutionFile)
         else:

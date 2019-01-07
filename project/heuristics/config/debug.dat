@@ -1,9 +1,9 @@
 # --- Common specific parameters ------------------------------------------------------------------------------
 inputDataFile        = /Users/miquel/GitHub/ammm/project/instances/small_0.dat;        # Input DAT file
-solutionFile         = solutions/big_1_B.sol; # Output DAT file (solution)
+solutionFile         = solutions/small_0_B.sol; # Output DAT file (solution)
 verbose              = True
-solver               = Greedy;                 # Supported solvers: Greedy / GRASP
-maxExecTime          = 1200;                   # Maximum execution time in seconds
+solver               = GRASP;                 # Supported solvers: Greedy / GRASP
+maxExecTime          = 300;                   # Maximum execution time in seconds
 
 # --- Greedy specific parameters ------------------------------------------------------------------------------
 # Does not has specific parameters

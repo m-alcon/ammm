@@ -65,6 +65,9 @@ class Solution(Problem):
         return self.feasible
 
     def calculateActualCost(self):
+        if not self.serviceIdToBusId and not self.driverIdToTimeWorked:
+            return float('infinity')
+
         busCost = 0
         for serviceId,busId in self.serviceIdToBusId.items():
             service = self.services[serviceId]

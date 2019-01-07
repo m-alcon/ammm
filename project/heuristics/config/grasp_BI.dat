@@ -1,18 +1,18 @@
 # --- Common specific parameters ------------------------------------------------------------------------------
-inputDataFile        = /home/malcon/Master/ammm/Project/project/instances/medium_1.dat;        # Input DAT file
-solutionFile         = solutions/medium_1_grasp.sol; # Output DAT file (solution)
+inputDataFile        = /home/malcon/Master/ammm/Project/project/instances/chungus_1.dat;        # Input DAT file
+solutionFile         = solutions/chungus_1_grasp_BI.sol; # Output DAT file (solution)
 solver               = GRASP;                 # Supported solvers: Greedy / GRASP
-maxExecTime          = 300;                   # Maximum execution time in seconds
+maxExecTime          = 60;                   # Maximum execution time in seconds
 
 # --- Greedy specific parameters ------------------------------------------------------------------------------
 # Does not has specific parameters
 
 # --- GRASP specific parameters -------------------------------------------------------------------------------
 # Ignored if solver is not GRASP.
-alpha                = 0.9;                   # Alpha parameter for the GRASP solver.
+alpha                = 0.1;                   # Alpha parameter for the GRASP solver.
 
 # --- Local Search specific parameters ------------------------------------------------------------------------
 # Ignored if solver is not Greedy or GRASP.
 localSearch          = True;                  # Enable local search?
 neighborhoodStrategy = Reassignment;          # Supported Neighborhoods: Reassignment / Exchange
-policy               = FirstImprovement;       # Supported Policies: BestImprovement / FirstImprovement
+policy               = BestImprovement;       # Supported Policies: BestImprovement / FirstImprovement

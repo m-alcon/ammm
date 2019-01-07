@@ -5,11 +5,11 @@ Reading Input Data file /home/malcon/Master/ammm/Project/project/instances/huge_
 Creating Problem...
 Solving Problem...
 Elap. Time (s)   Obj. Value     Iterations
-    0.00000215          inf              0
-    2.03949213   1095.43000000              1
-    2.03962731   1095.43000000              1
+    0.00000381          inf              0
+    1.87288189   1095.43000000              1
+    1.87297916   1095.43000000              1
 
 Greedy Candidate Evaluation Performance:
   Num. Candidates Eval. 60000
-  Total Eval. Time      2.0326926708221436 s
-  Avg. Time / Candidate 0.03387821118036906 ms
+  Total Eval. Time      1.8673226833343506 s
+  Avg. Time / Candidate 0.031122044722239176 ms

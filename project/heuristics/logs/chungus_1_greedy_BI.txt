@@ -5,16 +5,16 @@ Reading Input Data file /home/malcon/Master/ammm/Project/project/instances/chung
 Creating Problem...
 Solving Problem...
 Elap. Time (s)   Obj. Value     Iterations
-    0.00000262          inf              0
-    3.19833899   1401.07000000              1
-   16.60731053   1401.07000000              1
+    0.00000215          inf              0
+    3.19588304   1401.07000000              1
+   16.74845076   1401.07000000              1
 
 Greedy Candidate Evaluation Performance:
   Num. Candidates Eval. 103680
-  Total Eval. Time      3.1911754608154297 s
-  Avg. Time / Candidate 0.030779084305704377 ms
+  Total Eval. Time      3.1881203651428223 s
+  Avg. Time / Candidate 0.030749617719355925 ms
 
 Local Search Performance:
   Num. Iterations Eval. 1
-  Total Eval. Time      13.40879225730896 s
-  Avg. Time / Iteration 13408.79225730896 ms
+  Total Eval. Time      13.552406549453735 s
+  Avg. Time / Iteration 13552.406549453735 ms

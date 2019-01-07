@@ -1,6 +1,6 @@
 # --- Common specific parameters ------------------------------------------------------------------------------
-inputDataFile        = /home/malcon/Master/ammm/Project/project/instances/huge_1.dat;        # Input DAT file
-solutionFile         = solutions/huge_1_greedy_BI.sol; # Output DAT file (solution)
+inputDataFile        = /home/malcon/Master/ammm/Project/project/instances/chungus_1.dat;        # Input DAT file
+solutionFile         = solutions/chungus_1_greedy_BI.sol; # Output DAT file (solution)
 solver               = Greedy;                 # Supported solvers: Greedy / GRASP
 maxExecTime          = 60;                   # Maximum execution time in seconds
 

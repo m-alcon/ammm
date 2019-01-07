@@ -53,7 +53,7 @@ giant = {}
 giant['Greedy'] = [3.1425,17.22]
 giant['Greedy LS FI'] = [16.723,17.22]
 giant['Greedy LS BI'] = [16.748,17.22]
-giant['GRASP LS FI'] = []
+giant['GRASP LS FI'] = [731.76,17.17]
 giant['GRASP LS BI'] = [326.20,16.70]
 giant['CPLEX'] = [4133.0,0]
 
@@ -62,4 +62,4 @@ if __name__ == '__main__':
     save_plot(medium,'medium')
     save_plot(big,'big')
     save_plot(huge,'huge')
-    # save_plot(giant,'giant')
+    save_plot(giant,'giant')

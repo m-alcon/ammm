@@ -17,4 +17,9 @@
 #You should have received a copy of the GNU General Public License
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-C:/Python27/python.exe Main.py config/example.dat
+python2 Main.py config/example.dat
+python2 Main.py config/small.dat
+python2 Main.py config/medium.dat
+python2 Main.py config/big.dat
+python2 Main.py config/huge.dat
+python2 Main.py config/big_chungus.dat

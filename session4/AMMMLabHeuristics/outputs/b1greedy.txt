@@ -6,10 +6,10 @@ Creating Problem...
 Solving Problem...
 Elap. Time (s)   Obj. Value     Iterations
     0.00000000          inf              0
-    0.18199992   0.43278301              1
-    0.18199992   0.43278301              1
+    0.24899983   0.43278301              1
+    0.24899983   0.43278301              1
 
 Greedy Candidate Evaluation Performance:
   Num. Candidates Eval. 2500
-  Total Eval. Time      0.178999900818 s
-  Avg. Time / Candidate 0.0715999603271 ms
+  Total Eval. Time      0.238999843597 s
+  Avg. Time / Candidate 0.095599937439 ms

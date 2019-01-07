@@ -66,7 +66,6 @@ class LocalSearch(object):
             serviceId = change.serviceId
             service = solution.services[serviceId]
 
-            curBusId = change.curBusId
             newBusId = change.newBusId
             curDriverId = change.curDriverId
             newDriverId = change.newDriverId
@@ -123,8 +122,6 @@ class LocalSearch(object):
         return sorted_assignments
 
     def exploreNeighborhood(self, solution):
-        services = solution.services
-
         actualCost = solution.calculateActualCost()
         bestNeighbor = solution
 

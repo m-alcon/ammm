@@ -173,10 +173,6 @@ class Solution(Problem):
             return False
 
         # Assign
-        service = self.services[serviceId]
-        bus = self.buses[busId]
-        driver = self.drivers[driverId]
-
         ## Bus
         self.serviceIdToBusId[serviceId] = busId
         if busId in self.busIdToServicesId:
@@ -230,10 +226,6 @@ class Solution(Problem):
             return False
 
         # Unassign
-        service = self.services[serviceId]
-        bus = self.buses[busId]
-        driver = self.drivers[driverId]
-
         ## Bus
         self.serviceIdToBusId.pop(serviceId)
         self.busIdToServicesId[busId].remove(serviceId)
@@ -284,7 +276,7 @@ class Solution(Problem):
                 if not feasible: continue
 
                 actualCost = self.calculateActualCost()
-                if (bestCost > actualCost) or (bestCost == actualCost and bus.getCapacity() < bestCapacity):
+                if (bestAssignment.totalCost > actualCost) or (bestAssignment.totalCost == actualCost and bus.getCapacity() < bestCapacity):
                     bestAssignment.busId = busId
                     bestAssignment.driverId = driverId
                     bestAssignment.totalCost = actualCost

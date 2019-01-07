@@ -1,0 +1,20 @@
+AMMM Lab Heuristics
+-------------------
+Reading Config file config/grasp.dat...
+Reading Input Data file /home/malcon/Master/ammm/Project/project/instances/chungus_2.dat...
+Creating Problem...
+Solving Problem...
+Elap. Time (s)   Obj. Value     Iterations
+    0.00000143          inf              0
+   16.72016406   1299.80000000              1
+ 1506.02240872   1299.80000000              5
+
+GRASP Candidate Evaluation Performance:
+  Num. Candidates Eval. 504576
+  Total Eval. Time      18.02839207649231 s
+  Avg. Time / Candidate 0.03572978515920755 ms
+
+Local Search Performance:
+  Num. Iterations Eval. 111
+  Total Eval. Time      1487.8994317054749 s
+  Avg. Time / Iteration 13404.499384734008 ms

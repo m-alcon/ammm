@@ -18,4 +18,11 @@
 #You should have received a copy of the GNU General Public License
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-python3 Main.py config/debug.dat
+echo "GREEDY"
+python3 Main.py config/greedy_X.dat > logs/greedy_X.txt
+echo "GREEDY FI"
+python3 Main.py config/greedy_FI.dat > logs/greedy_FI.txt
+echo "GREEDY BI"
+python3 Main.py config/greedy_BI.dat > logs/greedy_BI.txt
+echo "GRASP"
+python3 Main.py config/grasp.dat > logs/grasp.txt

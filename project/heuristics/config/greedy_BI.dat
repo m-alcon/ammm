@@ -1,9 +1,8 @@
 # --- Common specific parameters ------------------------------------------------------------------------------
-inputDataFile        = /home/malcon/Master/ammm/Project/project/instances/small_0.dat;        # Input DAT file
-solutionFile         = solutions/small_0_B.sol; # Output DAT file (solution)
-verbose              = True;
-solver               = GRASP;                 # Supported solvers: Greedy / GRASP
-maxExecTime          = 300;                   # Maximum execution time in seconds
+inputDataFile        = /home/malcon/Master/ammm/Project/project/instances/huge_1.dat;        # Input DAT file
+solutionFile         = solutions/huge_1_greedy_BI.sol; # Output DAT file (solution)
+solver               = Greedy;                 # Supported solvers: Greedy / GRASP
+maxExecTime          = 1200;                   # Maximum execution time in seconds
 
 # --- Greedy specific parameters ------------------------------------------------------------------------------
 # Does not has specific parameters
@@ -14,6 +13,6 @@ alpha                = 0.5;                   # Alpha parameter for the GRASP so
 
 # --- Local Search specific parameters ------------------------------------------------------------------------
 # Ignored if solver is not Greedy or GRASP.
-localSearch          = False;                  # Enable local search?
+localSearch          = True;                  # Enable local search?
 neighborhoodStrategy = Reassignment;          # Supported Neighborhoods: Reassignment / Exchange
 policy               = BestImprovement;       # Supported Policies: BestImprovement / FirstImprovement

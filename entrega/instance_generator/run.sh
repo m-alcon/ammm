@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#AMMM Instance Generator v1.0
+#Run script.
+#Copyright 2016 Luis Velasco and Lluis Gifre.
+#
+#This program is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation, either version 3 of the License, or
+#(at your option) any later version.
+#
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#
+#You should have received a copy of the GNU General Public License
+#along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+python2 Main.py config/example.dat
+python2 Main.py config/small.dat
+python2 Main.py config/medium.dat
+python2 Main.py config/big.dat
+python2 Main.py config/huge.dat
+python2 Main.py config/big_chungus.dat

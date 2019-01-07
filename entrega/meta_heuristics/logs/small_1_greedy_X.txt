@@ -1,0 +1,15 @@
+AMMM Lab Heuristics
+-------------------
+Reading Config file config/greedy_X.dat...
+Reading Input Data file /home/malcon/Master/ammm/Project/project/instances/small_1.dat...
+Creating Problem...
+Solving Problem...
+Elap. Time (s)   Obj. Value     Iterations
+    0.00000238          inf              0
+    0.05481982   484.56000000              1
+    0.05488491   484.56000000              1
+
+Greedy Candidate Evaluation Performance:
+  Num. Candidates Eval. 3840
+  Total Eval. Time      0.05414152145385742 s
+  Avg. Time / Candidate 0.01409935454527537 ms

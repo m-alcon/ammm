@@ -22,6 +22,10 @@ REM along with this program.  If not, see <http://www.gnu.org/licenses/>.
 REM Python 3.7 is required.
 REM This script assumes that Python is installed to C:\Python37
 
-C:\Python37\python.exe Main.py config\b1greedy.dat
+C:\Python37\python.exe Main.py config/greedy_X.dat
+C:\Python37\python.exe Main.py config/greedy_FI.dat
+C:\Python37\python.exe Main.py config/greedy_BI.dat
+C:\Python37\python.exe Main.py config/grasp_FI.dat
+C:\Python37\python.exe Main.py config/grasp_BI.dat
 
 pause

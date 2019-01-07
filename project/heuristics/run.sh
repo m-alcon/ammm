@@ -20,11 +20,13 @@
 
 file="huge_1"
 
-#echo "GREEDY"
-#python3 Main.py config/greedy_X.dat > logs/${file}_greedy_X.txt
-#echo "GREEDY FI"
-#python3 Main.py config/greedy_FI.dat > logs/${file}_greedy_FI.txt
-#echo "GREEDY BI"
-#python3 Main.py config/greedy_BI.dat > logs/${file}_greedy_BI.txt
-echo "GRASP"
+echo "GREEDY"
+python3 Main.py config/greedy_X.dat > logs/${file}_greedy_X.txt
+echo "GREEDY FI"
+python3 Main.py config/greedy_FI.dat > logs/${file}_greedy_FI.txt
+echo "GREEDY BI"
+python3 Main.py config/greedy_BI.dat > logs/${file}_greedy_BI.txt
+echo "GRASP FI"
 python3 Main.py config/grasp_FI.dat > logs/${file}_grasp_FI.txt
+echo "GRASP BI"
+python3 Main.py config/grasp_BI.dat > logs/${file}_grasp_BI.txt

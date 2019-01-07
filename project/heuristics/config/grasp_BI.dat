@@ -1,6 +1,6 @@
 # --- Common specific parameters ------------------------------------------------------------------------------
-inputDataFile        = /home/malcon/Master/ammm/Project/project/instances/medium_0.dat;        # Input DAT file
-solutionFile         = solutions/medium_0_grasp_BI.sol; # Output DAT file (solution)
+inputDataFile        = /home/malcon/Master/ammm/Project/project/instances/big_1.dat;        # Input DAT file
+solutionFile         = solutions/big_1_grasp_BI.sol; # Output DAT file (solution)
 solver               = GRASP;                 # Supported solvers: Greedy / GRASP
 maxExecTime          = 1800;                   # Maximum execution time in seconds
 

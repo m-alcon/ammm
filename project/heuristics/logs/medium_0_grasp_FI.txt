@@ -5,4 +5,18 @@ Reading Input Data file /home/malcon/Master/ammm/Project/project/instances/mediu
 Creating Problem...
 Solving Problem...
 Elap. Time (s)   Obj. Value     Iterations
-    0.00000095          inf              0
+    0.00000119          inf              0
+    1.19640183   662.72000000              1
+   40.28762698   659.89000000              4
+   96.91897774   656.18000000              9
+  305.45976448   656.18000000             27
+
+GRASP Candidate Evaluation Performance:
+  Num. Candidates Eval. 349920
+  Total Eval. Time      7.06850004196167 s
+  Avg. Time / Candidate 0.020200331624261745 ms
+
+Local Search Performance:
+  Num. Iterations Eval. 514
+  Total Eval. Time      298.3178572654724 s
+  Avg. Time / Iteration 580.3849363141487 ms

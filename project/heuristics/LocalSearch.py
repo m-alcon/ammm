@@ -152,8 +152,8 @@ class LocalSearch(object):
                         if actualCost > neighborCost:
                             neighbor = self.createNeighborSolution(solution, changes)
                             if neighbor is None: continue
-                            if neighbor.calculateActualCost() != neighborCost:
-                                print('NEIGHBOR COSTS DOESN\'T MATCH')
+                            if solution.verbose and neighbor.calculateActualCost() != neighborCost:
+                                print('ERROR: neighbor costs doesn\'t match')
                             if self.policy == 'FirstImprovement':
                                 return neighbor
                             else:

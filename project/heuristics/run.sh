@@ -18,7 +18,7 @@
 #You should have received a copy of the GNU General Public License
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-file="chungus_1"
+file="medium_0"
 
 #echo "GREEDY"
 #python3 Main.py config/greedy_X.dat > logs/${file}_greedy_X.txt
@@ -27,4 +27,4 @@ file="chungus_1"
 #echo "GREEDY BI"
 #python3 Main.py config/greedy_BI.dat > logs/${file}_greedy_BI.txt
 echo "GRASP"
-python3 Main.py config/grasp_BI.dat > logs/${file}_grasp_BI.txt
+python3 Main.py config/grasp_FI.dat > logs/${file}_grasp_FI.txt

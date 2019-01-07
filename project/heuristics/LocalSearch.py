@@ -42,8 +42,8 @@ class LocalSearch(object):
         self.iterations = 0
 
     def createNeighborSolution(self, solution, changes):
-        # unassign the tasks specified in changes
-        # and reassign them to the new CPUs
+        # unassign the services specified in changes
+        # and reassign them to the new Bus and Driver
 
         newSolution = copy.deepcopy(solution)
 
@@ -52,7 +52,8 @@ class LocalSearch(object):
 
         for change in changes:
             feasible = newSolution.assign(change.serviceId, change.newBusId, change.newDriverId)
-            if not feasible: return None
+            if not feasible:
+                return None
 
         return newSolution
 
@@ -146,8 +147,7 @@ class LocalSearch(object):
                         newDriverId = driver.getId()
                         if newBusId == curBusId and newDriverId == curDriverId: continue
 
-                        changes = []
-                        changes.append(Change(serviceId, curBusId, newBusId, curDriverId, newDriverId))
+                        changes = [Change(serviceId, curBusId, newBusId, curDriverId, newDriverId)]
                         neighborCost = self.evaluateNeighbor(solution, changes)
                         if actualCost > neighborCost:
                             neighbor = self.createNeighborSolution(solution, changes)
@@ -227,7 +227,7 @@ class LocalSearch(object):
             iterations += 1
 
             neighbor = self.exploreNeighborhood(bestSolution)
-            curCost = neighbor.getCost()
+            curCost = neighbor.calculateActualCost()
             if bestCost > curCost:
                 bestSolution = neighbor
                 bestCost = curCost

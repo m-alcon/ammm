@@ -1,5 +1,5 @@
 # --- Common specific parameters ------------------------------------------------------------------------------
-inputDataFile        = /Users/miquel/GitHub/ammm/project/instances/big_1.dat;        # Input DAT file
+inputDataFile        = /Users/miquel/GitHub/ammm/project/instances/small_0.dat;        # Input DAT file
 solutionFile         = solutions/big_1_B.sol; # Output DAT file (solution)
 verbose              = True
 solver               = Greedy;                 # Supported solvers: Greedy / GRASP
